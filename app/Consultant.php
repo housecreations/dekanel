@@ -12,4 +12,9 @@ class Consultant extends Model
         'name', 'last_name', 'description', 'speciality', 'profile_image_url'
     ];
 
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('name', 'LIKE', "%$name%");
+    }
+
 }

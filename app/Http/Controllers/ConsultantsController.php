@@ -6,16 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class ConsultantsControllers extends Controller
+use App\Consultant;
+
+use Laracasts\Flash\Flash;
+
+class ConsultantsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $consultants = Consultant::search($request->name)->orderBy('id', 'DESC')->simplePaginate(6);
+
+        return view('admin.consultants.index', ['consultants' => $consultants]);
     }
 
     /**
@@ -36,7 +42,26 @@ class ConsultantsControllers extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->file('profile_image_url')) {
+
+            $file = $request->file('profile_image_url');
+            $name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
+            $path = 'images/consultants/';
+            $file->move($path, $name);
+
+        }
+
+        $consultant = new Consultant();
+        $consultant->name = $request->name;
+        $consultant->last_name = $request->last_name;
+        $consultant->description = $request->description;
+        $consultant->speciality = $request->speciality;
+        $consultant->profile_image_url = $name;
+        $consultant->save();
+
+        Flash::success("Consultor registrado");
+
+        return back();
     }
 
     /**
@@ -79,8 +104,13 @@ class ConsultantsControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+
+        $consultant = Consultant::destroy($request->consultant_id);
+        
+        Flash::success("Consultor eliminado");
+
+        return back();
     }
 }

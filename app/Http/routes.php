@@ -17,4 +17,14 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    Route::get('/', [
+        'as' => 'admin.index',
+        'uses' => 'HomeController@index']);
+
+    Route::resource('consultants', 'ConsultantsController');
+
+});
+
+
