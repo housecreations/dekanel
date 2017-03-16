@@ -28,6 +28,113 @@ $(document).ready(function(){
     });
 
 
+
+    $('.remove_workshop').on('click', function(e){
+        var workshop_id = $(this).attr('data-workshop');
+        $('#workshop_id_field').val(workshop_id);
+    });
+
+    $(".show_workshop").on("click", function(ev){
+
+        var workshop_id = $(this).attr('data-workshop');
+
+        $.ajax({
+            url: '/admin/products/workshops/show/' + workshop_id,
+            method: 'GET',
+            success: function(data){
+
+                $('#workshop-name').html(data.workshop.name);
+                $('#workshop-img').attr('src', '/images/workshops/'+data.workshop.image_url);
+            },
+            error: function(err){
+                console.log(err);
+
+            }
+        });
+
+    });
+
+    $(".edit_workshop").on("click", function(ev){
+
+        var workshop_id = $(this).attr('data-workshop');
+
+        $('#edit_workshop_id').val(workshop_id);
+
+        $.ajax({
+            url: '/admin/products/workshops/show/' + workshop_id,
+            method: 'GET',
+            success: function(data){
+
+                $("#editWorkshop [name='edit_name']").val(data.workshop.name);
+
+            },
+            error: function(err){
+                console.log(err);
+
+            }
+        });
+
+    });
+
+
+
+
+
+    $('.remove_product').on('click', function(e){
+        var product_id = $(this).attr('data-product');
+        $('#product_id_field').val(product_id);
+    });
+
+    $(".show_product").on("click", function(ev){
+
+        var product_id = $(this).attr('data-product');
+
+        $.ajax({
+            url: '/admin/products/' + product_id,
+            method: 'GET',
+            success: function(data){
+
+                $('#product-name').html(data.product.name);
+                $('#product-description').html(data.product.description);
+                $('#product-img').attr('src', '/images/products/'+data.product.image_url);
+                $('#product-consultant-img').attr('src', '/images/products/'+data.product.consultant_image_url);
+            },
+            error: function(err){
+                console.log(err);
+
+            }
+        });
+
+    });
+
+    $(".edit_product").on("click", function(ev){
+
+        var product_id = $(this).attr('data-product');
+
+        $('#edit_product_id').val(product_id);
+
+        $.ajax({
+            url: '/admin/products/' + product_id,
+            method: 'GET',
+            success: function(data){
+
+                $("#editProduct [name='edit_name']").val(data.product.name);
+                $("#editProduct [name='edit_description']").val(data.product.description);
+
+
+            },
+            error: function(err){
+                console.log(err);
+
+            }
+        });
+
+    });
+
+
+
+
+
     $('.remove_client').on('click', function(e){
         var client_id = $(this).attr('data-client');
         $('#client_id_field').val(client_id);

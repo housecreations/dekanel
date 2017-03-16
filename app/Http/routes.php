@@ -76,6 +76,33 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('consultants', 'ConsultantsController');
     Route::resource('clients', 'ClientsController');
     Route::resource('configuration', 'ApplicationInformationsController');
+    Route::resource('products', 'ProductsController');
+
+    Route::group(['prefix' => 'products'], function () {
+
+        Route::get('/workshops/{id}', [
+            'as' => 'admin.products.workshops.index',
+            'uses' => 'TopicsController@index']);
+
+        Route::post('/workshops/', [
+            'as' => 'admin.products.workshops.store',
+            'uses' => 'TopicsController@store']);
+
+        Route::get('/workshops/show/{id}', [
+            'as' => 'admin.products.workshops.show',
+            'uses' => 'TopicsController@show']);
+
+        Route::put('/workshops/{id}', [
+            'as' => 'admin.products.workshops.update',
+            'uses' => 'TopicsController@update']);
+
+        Route::delete('/workshops/{id}', [
+            'as' => 'admin.products.workshops.destroy',
+            'uses' => 'TopicsController@destroy']);
+
+       /* Route::resource('workshops', 'TopicsController');*/
+
+    });
 
 });
 

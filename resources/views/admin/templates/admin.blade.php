@@ -54,24 +54,22 @@
             <nav class="gn-menu-wrapper">
                 <div class="gn-scroller">
                     <ul class="gn-menu">
-                       {{-- @if(!App\Config::all()->isEmpty())--}}
-                            <li>
-                                <a class="fa fa-home" href="{{ url('admin/')}}">Dashboard</a>
 
-                            </li>
-                            <li>
-                                <a class="fa fa-users" href="{{ route('admin.consultants.index')}}">Consultores</a>
-                            </li>
-                            <li><a class="fa fa-briefcase" href="{{ route('admin.clients.index')}}">Clientes</a></li>
+                        <li>
+                            <a class="fa fa-home" href="{{ url('admin/')}}">Dashboard</a>
 
-                            <li>
-                                <a class="fa fa-cog" href="{{ route('admin.configuration.index')}}">Configuración</a>
+                        </li>
+                        <li>
+                            <a class="fa fa-users" href="{{ route('admin.consultants.index')}}">Consultores</a>
+                        </li>
+                        <li><a class="fa fa-briefcase" href="{{ route('admin.clients.index')}}">Clientes</a></li>
+                        <li><a class="fa fa-bolt" href="{{ route('admin.products.index')}}">Productos</a></li>
+                        <li>
+                            <a class="fa fa-cog" href="{{ route('admin.configuration.index')}}">Configuración</a>
 
-                            </li>
-                            <li>
-                                <a class="fa fa-user" href="">Mi cuenta</a>
-                            </li>{{--
-                        @endif--}}
+                        </li>
+
+
                         <li>
 
                             <a class="fa fa-sign-out" href="{{ url('/logout') }}">Salir</a>

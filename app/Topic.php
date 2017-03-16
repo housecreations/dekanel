@@ -23,4 +23,9 @@ class Topic extends Model
         return $this->hasMany('App\SubTopic');
 
     }
+
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('name', 'LIKE', "%$name%");
+    }
 }
