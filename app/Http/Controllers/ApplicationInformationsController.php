@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\ApplicationInformation;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
+use Laracasts\Flash\Flash;
 
 class ApplicationInformationsController extends Controller
 {
@@ -13,10 +16,14 @@ class ApplicationInformationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        $configurations = ApplicationInformation::search($request->name)->orderBy('id', 'ASC')->paginate(10);
+
+        return view('admin.application_information.index', ['configurations' => $configurations]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,9 +52,14 @@ class ApplicationInformationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        if($request->ajax()){
+
+            $configuration = ApplicationInformation::find($id);
+
+            return response()->json(['configuration' => $configuration]);
+        }
     }
 
     /**
@@ -70,7 +82,17 @@ class ApplicationInformationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $configuration = ApplicationInformation::find($request->edit_configuration_id);
+
+        $configuration->value = $request->edit_value;
+
+        $configuration->save();
+
+        Flash::success("Configuración actualizada");
+
+        return back();
+
+
     }
 
     /**

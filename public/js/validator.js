@@ -1,7 +1,9 @@
 
 $(document).ready(function () {
 
-    var $form = $('[required]').closest('form');
+   /* var $form = $('[required]').closest('form');
+
+    console.log($form);
 
     $form.find(':submit').click(function (e) {
        e.preventDefault();
@@ -15,6 +17,6 @@ $(document).ready(function () {
             $form.submit();
         }
 
-    });
+    });*/
 
 });

@@ -19,7 +19,7 @@ class ConsultantsController extends Controller
      */
     public function index(Request $request)
     {
-        $consultants = Consultant::search($request->name)->orderBy('id', 'DESC')->simplePaginate(6);
+        $consultants = Consultant::search($request->name)->orderBy('id', 'DESC')->paginate(6);
 
         return view('admin.consultants.index', ['consultants' => $consultants]);
     }
@@ -70,9 +70,14 @@ class ConsultantsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        if($request->ajax()){
+
+        $consultant = Consultant::find($id);
+
+        return response()->json(['consultant' => $consultant]);
+            }
     }
 
     /**
@@ -83,7 +88,7 @@ class ConsultantsController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -95,7 +100,29 @@ class ConsultantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $consultant = Consultant::find($request->edit_consultant_id);
+
+        if ($request->file('edit_profile_image_url')) {
+            $file = $request->file('edit_profile_image_url');
+            $name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
+            $path = 'images/consultants/';
+            $file->move($path, $name);
+
+            $consultant->profile_image_url = $name;
+
+        }
+
+        $consultant->name = $request->edit_name;
+        $consultant->last_name = $request->edit_last_name;
+        $consultant->description = $request->edit_description;
+        $consultant->speciality = $request->edit_speciality;
+        $consultant->save();
+
+        Flash::success("Consultor actualizado");
+
+        return back();
+
+
     }
 
     /**
@@ -108,7 +135,7 @@ class ConsultantsController extends Controller
     {
 
         $consultant = Consultant::destroy($request->consultant_id);
-        
+
         Flash::success("Consultor eliminado");
 
         return back();

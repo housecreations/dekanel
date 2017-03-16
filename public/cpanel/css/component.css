@@ -6,6 +6,11 @@
 		box-sizing: border-box;
 }
 
+
+img.thumbnail.thumbnail-table {
+    width: 150px;
+}
+
 button.button-on {
     position: absolute;
     right: 30px;

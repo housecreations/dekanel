@@ -17,6 +17,7 @@ class CreateApplicationInformationTable extends Migration
             $table->increments('id');
             $table->string('option');
             $table->string('value');
+            $table->string('label');
             $table->timestamps();
         });
     }

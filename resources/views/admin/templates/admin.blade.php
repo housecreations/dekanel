@@ -56,25 +56,16 @@
                     <ul class="gn-menu">
                        {{-- @if(!App\Config::all()->isEmpty())--}}
                             <li>
-                                <a class="fa fa-home" href="">Dashboard</a>
+                                <a class="fa fa-home" href="{{ url('admin/')}}">Dashboard</a>
 
                             </li>
                             <li>
                                 <a class="fa fa-users" href="{{ route('admin.consultants.index')}}">Consultores</a>
                             </li>
-                            <li><a class="fa fa-puzzle-piece" href="">Plantillas</a></li>
-                            <li><a class="fa fa-archive" href="">Artículos</a></li>
-                            <li><a class="fa fa-list" href="">Categorías</a></li>
-                            <li>
-                                <a class="fa fa-tag" href="">Tags</a>
+                            <li><a class="fa fa-briefcase" href="{{ route('admin.clients.index')}}">Clientes</a></li>
 
-                            </li>
                             <li>
-                                <a class="fa fa-inbox" href=" ">Mensajes</a>
-
-                            </li>
-                            <li>
-                                <a class="fa fa-cog" href="">Configuración</a>
+                                <a class="fa fa-cog" href="{{ route('admin.configuration.index')}}">Configuración</a>
 
                             </li>
                             <li>

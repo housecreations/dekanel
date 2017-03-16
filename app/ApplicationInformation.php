@@ -9,6 +9,11 @@ class ApplicationInformation extends Model
     protected $table = "application_informations";
 
     protected $fillable = [
-        'option', 'value'
+        'option', 'value', 'label'
     ];
+
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('label', 'LIKE', "%$name%");
+    }
 }

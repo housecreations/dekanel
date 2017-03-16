@@ -11,4 +11,9 @@ class Client extends Model
     protected $fillable = [
         'name', 'description', 'logo_url'
     ];
+
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('name', 'LIKE', "%$name%");
+    }
 }

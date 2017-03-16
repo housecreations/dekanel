@@ -12,6 +12,56 @@
 */
 
 Route::get('/', function () {
+
+    $initial_config = App\ApplicationInformation::all();
+
+    if ($initial_config->isEmpty()){
+
+       $initial_config = new App\ApplicationInformation();
+       $initial_config->option = 'title';
+       $initial_config->value = '';
+       $initial_config->label = 'Título de la página';
+       $initial_config->save();
+
+
+        $initial_config = new App\ApplicationInformation();
+        $initial_config->option = 'address';
+        $initial_config->value = '';
+        $initial_config->label = 'Dirección';
+        $initial_config->save();
+
+        $initial_config = new App\ApplicationInformation();
+        $initial_config->option = 'logo_url';
+        $initial_config->value = '';
+        $initial_config->label = 'Logo de la página';
+        $initial_config->save();
+
+        $initial_config = new App\ApplicationInformation();
+        $initial_config->option = 'phone_number';
+        $initial_config->value = '';
+        $initial_config->label = 'Teléfono';
+        $initial_config->save();
+
+        $initial_config = new App\ApplicationInformation();
+        $initial_config->option = 'email';
+        $initial_config->value = '';
+        $initial_config->label = 'Correo electrónico';
+        $initial_config->save();
+
+        $initial_config = new App\ApplicationInformation();
+        $initial_config->option = 'facebook_url';
+        $initial_config->value = '';
+        $initial_config->label = 'Página de Facebook';
+        $initial_config->save();
+
+        $initial_config = new App\ApplicationInformation();
+        $initial_config->option = 'linked_in_url';
+        $initial_config->value = '';
+        $initial_config->label = 'Perfil de LinkedIn';
+        $initial_config->save();
+
+    }
+
     return view('welcome');
 });
 
@@ -24,6 +74,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'uses' => 'HomeController@index']);
 
     Route::resource('consultants', 'ConsultantsController');
+    Route::resource('clients', 'ClientsController');
+    Route::resource('configuration', 'ApplicationInformationsController');
 
 });
 
