@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Consultant;
 use App\Http\Requests;
+use App\Product;
 use Illuminate\Http\Request;
 
 use App\ApplicationInformation;
@@ -75,6 +77,11 @@ class HomeController extends Controller
 
         }
 
-        return view('welcome_home');
+
+        $products = Product::all();
+
+        $consultants = Consultant::all();
+
+        return view('welcome_home', ['products' => $products, 'consultants' => $consultants]);
     }
 }

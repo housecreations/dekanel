@@ -45,7 +45,19 @@ class ProductsController extends Controller
 
         $product = new Product();
         $product->name = $request->name;
-        $product->description = $request->description;
+
+
+        $pos = strpos($request->description, '</cut>');
+
+        if ($pos !== false){
+
+            $desc = explode('</cut>', $request->description);
+            $product->description = $desc[0].$desc[1];
+            $product->short_description = $desc[0];
+        }else{
+            $product->description = $request->description;
+            $product->short_description = $product->description;
+        }
 
 
         if ($request->file('image_url')) {
@@ -62,13 +74,13 @@ class ProductsController extends Controller
         if ($request->file('consultant_image_url')) {
 
             $file = $request->file('consultant_image_url');
-            $name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
+            $consultant_name = 'Dekanel_Consulant_' . time() . "." . $file->getClientOriginalExtension();
             $path = 'images/products/';
-            $file->move($path, $name);
+            $file->move($path, $consultant_name);
 
         }
 
-        $product->consultant_image_url = $name;
+        $product->consultant_image_url = $consultant_name;
 
         $product->save();
 
@@ -114,6 +126,21 @@ class ProductsController extends Controller
     {
         $product = Product::find($request->edit_product_id);
 
+
+        $pos = strpos($request->edit_description, '</cut>');
+
+        if ($pos !== false){
+
+            $desc = explode('</cut>', $request->edit_description);
+            $product->description = $desc[0].$desc[1];
+            $product->short_description = $desc[0];
+        }else{
+            $product->description = $request->edit_description;
+            $product->short_description = $product->description;
+        }
+
+        $product->name = $request->edit_name;
+
         if ($request->file('edit_image_url')) {
             $file = $request->file('edit_image_url');
             $name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
@@ -125,16 +152,15 @@ class ProductsController extends Controller
         }
         if ($request->file('edit_consultant_image_url')) {
             $file = $request->file('edit_consultant_image_url');
-            $name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
+            $consultant_name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
             $path = 'images/products/';
-            $file->move($path, $name);
+            $file->move($path, $consultant_name);
 
-            $product->consultant_image_url = $name;
+            $product->consultant_image_url = $consultant_name;
 
         }
 
-        $product->name = $request->edit_name;
-        $product->description = $request->edit_description;
+
         $product->save();
 
         Flash::success("Producto actualizado");

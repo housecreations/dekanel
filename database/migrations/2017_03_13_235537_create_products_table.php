@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('image_url');
             $table->string('consultant_image_url');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
+            $table->longText('short_description');
             $table->timestamps();
         });
     }

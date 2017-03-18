@@ -59,7 +59,7 @@
                             <th>Imagen consultor</th>
                             <th>Título</th>
                             <th>Descripción</th>
-                            <th>Acciones</th>
+                            <th style="width: 300px;">Acciones</th>
                             </thead>
                             <tbody>
                             @foreach($products as $product)
@@ -68,7 +68,7 @@
                                     <td><img src="/images/products/{{$product->image_url}}" alt="" class="thumbnail thumbnail-table"></td>
                                     <td><img src="/images/products/{{$product->consultant_image_url}}" alt="" class="thumbnail thumbnail-table"></td>
                                     <td>{{$product->name}}</td>
-                                    <td>{{$product->description}}</td>
+                                    <td>{{$product->short_description}}</td>
                                     <td>
                                         <a href="" data-toggle="modal" data-product="{{$product->id}}" data-target="#showProduct" class='show_product'><span class="label label-default">Ver</span></a>
                                         <a href="" data-toggle="modal" data-product="{{$product->id}}" data-target="#editProduct" class='edit_product'><span class="label label-primary">Editar</span></a>
@@ -115,7 +115,7 @@
 
                             {!! Form::textarea('description', null, ['class' => 'form-control', 'size' => '20x5', 'required', 'placeholder' => 'Descripción del producto']) !!}
                         </div>
-
+                        <p>Agregue un &lt;/cut&gt; donde quiera limitar la descripción</p>
 
 
                     </div>
@@ -229,7 +229,7 @@
 
                             {!! Form::textarea('edit_description', null, ['class' => 'form-control', 'size' => '20x5', 'required', 'placeholder' => 'Descripción del producto']) !!}
                         </div>
-
+                        <p>Agregue un &lt;/cut&gt; donde quiera limitar la descripción</p>
                     </div>
 
                     <div class="form-group">

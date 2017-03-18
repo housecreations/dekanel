@@ -6,6 +6,159 @@ http://www.templatemo.com/tm-492-app-starter
 
 */
 
+img.consultant-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+p.consultants-speciality {
+  color: white;
+  /* padding-bottom: 0px; */
+  /* margin-bottom: 0px; */
+}
+
+p.consultants-description {
+  color: white;
+  font-size: 13px;
+}
+
+p.consultants-name {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.col-md-6.consultants {
+  margin-top: 40px;
+  /* padding-bottom: 50px; */
+  height: 200px;
+}
+
+a.product-link {
+  font-size: 16px;
+  font-weight: 800;
+
+  color: #008da5;
+}
+
+a.product-link:hover {
+  color: #0066d6;
+}
+
+
+
+p.products-description{
+
+  text-align: center;
+  font-size: 12px;
+  height: 80px;
+
+}
+p.products-name {
+  color: #fad040;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 15px;
+  height: 86px;
+
+}
+
+
+.product-img{
+
+width: 100px;
+  height: 100px;
+}
+
+.col-md-2-4 {
+  width: 20%;
+  float: left;
+  margin-top: 35px;
+  border-right: 3px solid #e4552f;
+}
+
+.col-md-10, .col-md-3, .col-md-2{
+ position: relative;
+    min-height: 1px;
+    padding-right: 3px;
+    padding-left: 0px;
+
+}
+
+p.text-work {
+  font-size: 16px;
+  line-height: normal;
+  padding-top: 15px;
+}
+
+.how-we-work{
+
+  padding-top: 40px;
+
+}
+
+p.number-work {
+  color: white;
+  font-size: 70px;
+
+}
+#about{
+  padding-top: 10px;
+  padding-bottom: 60px;
+  background: #fad040;
+
+}
+
+#products{
+  padding-top: 10px;
+  padding-bottom: 60px;
+  background: white;
+
+}
+#consultants{
+  padding-top: 10px;
+  padding-bottom: 60px;
+  background: #008da5;
+
+}
+
+
+.hr-md {
+  width: 100%;
+  border-top: 3px solid #eee;
+}
+
+.hr-lg {
+  width: 100%;
+  border-top: 3px solid #eee;
+}
+
+@media (min-width: 768px){
+  .navbar-nav>li>a {
+    padding-top: 65px;
+    padding-bottom: 15px;
+  }
+}
+
+  .navbar-nav>li>a {
+    padding-top: 65px;
+    padding-bottom: 10px;
+    line-height: 20px;
+  }
+
+.navbar {
+
+  min-height: 130px;
+
+}
+
+img.logo-position {
+  max-width: 100%;
+  width: 150px;
+  margin-top: 15px;
+}
+
 body {
 		background: #1c1c1c;
     font-family: 'Source Sans Pro', sans-serif;
@@ -136,11 +289,44 @@ a:hover, a:active, a:focus {
 
 .section-title {
   position: relative;
-  padding-bottom: 62px;
-  text-align: center;
+  padding-bottom: 0px;
+  padding-top: 50px;
+  text-align: left;
+}
+p.intro {
+  color: black;
+  font-size: 25px;
+  font-weight: 400;
+  font-style: italic;
+  padding-bottom: 15px;
 }
 
-#about,
+p {
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#about .section-title h2{
+
+  color: #008da5;
+
+}
+
+#products .section-title h2{
+
+  color: #e4552f;
+
+}
+
+#consultants .section-title h2{
+
+  color: white;
+
+}
+
+
 #screenshot,
 #divider,
 #pricing,
@@ -210,6 +396,10 @@ a:hover, a:active, a:focus {
     border: none;
     box-shadow: none;
     margin: 0 !important;
+
+  -webkit-box-shadow: 0px 3px 19px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 3px 19px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 3px 19px 0px rgba(50, 50, 50, 0.75);
 }
 
 .navbar-default .navbar-brand {
@@ -888,3 +1078,4 @@ footer p {
   }
 
 }
+
