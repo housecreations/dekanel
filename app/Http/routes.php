@@ -11,59 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [
+    'uses' => 'HomeController@index']);
 
-    $initial_config = App\ApplicationInformation::all();
-
-    if ($initial_config->isEmpty()){
-
-       $initial_config = new App\ApplicationInformation();
-       $initial_config->option = 'title';
-       $initial_config->value = '';
-       $initial_config->label = 'Título de la página';
-       $initial_config->save();
-
-
-        $initial_config = new App\ApplicationInformation();
-        $initial_config->option = 'address';
-        $initial_config->value = '';
-        $initial_config->label = 'Dirección';
-        $initial_config->save();
-
-        $initial_config = new App\ApplicationInformation();
-        $initial_config->option = 'logo_url';
-        $initial_config->value = '';
-        $initial_config->label = 'Logo de la página';
-        $initial_config->save();
-
-        $initial_config = new App\ApplicationInformation();
-        $initial_config->option = 'phone_number';
-        $initial_config->value = '';
-        $initial_config->label = 'Teléfono';
-        $initial_config->save();
-
-        $initial_config = new App\ApplicationInformation();
-        $initial_config->option = 'email';
-        $initial_config->value = '';
-        $initial_config->label = 'Correo electrónico';
-        $initial_config->save();
-
-        $initial_config = new App\ApplicationInformation();
-        $initial_config->option = 'facebook_url';
-        $initial_config->value = '';
-        $initial_config->label = 'Página de Facebook';
-        $initial_config->save();
-
-        $initial_config = new App\ApplicationInformation();
-        $initial_config->option = 'linked_in_url';
-        $initial_config->value = '';
-        $initial_config->label = 'Perfil de LinkedIn';
-        $initial_config->save();
-
-    }
-
-    return view('welcome');
-});
 
 Route::auth();
 
@@ -71,7 +21,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', [
         'as' => 'admin.index',
-        'uses' => 'HomeController@index']);
+        'uses' => 'AdminController@index']);
+
+    Route::post('/carousel', [
+        'as' => 'admin.carousel.store',
+        'uses' => 'AdminController@storeCarousel']);
+
+    Route::put('/carousel', [
+        'as' => 'admin.carousel.update',
+        'uses' => 'AdminController@updateCarousel']);
+
+    Route::delete('/carousel', [
+        'as' => 'admin.carousel.destroy',
+        'uses' => 'AdminController@destroyCarousel']);
 
     Route::resource('consultants', 'ConsultantsController');
     Route::resource('clients', 'ClientsController');
@@ -100,7 +62,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
             'as' => 'admin.products.workshops.destroy',
             'uses' => 'TopicsController@destroy']);
 
-       /* Route::resource('workshops', 'TopicsController');*/
+
+
+        Route::get('/workshops/description/{id}', [
+            'uses' => 'TopicsController@showDescription']);
+
+        Route::put('/workshops/description/{id}', [
+            'as' => 'admin.products.workshops.descriptions.update',
+            'uses' => 'TopicsController@updateDescription']);
 
     });
 

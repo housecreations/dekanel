@@ -12,31 +12,32 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('cpanel/css/normalize.css')}}">
-    <link rel="stylesheet" href="{{ asset('cpanel/css/demo.css')}}">
-    <link rel="stylesheet" href="{{ asset('cpanel/css/component.css')}}">
+
 
 
     {{--    <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/sl-slide.css')}}">
+   {{-- <link rel="stylesheet" href="{{ asset('css/sl-slide.css')}}">
     <link rel="stylesheet" href="{{ asset('css/blue-scheme.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css')}}">--}}
+    <link rel="stylesheet" href="{{ asset('cpanel/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('cpanel/css/component.css')}}">
+    <link rel="stylesheet" href="{{ asset('cpanel/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{ asset('cpanel/css/demo.css')}}">
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
           rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
           rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
+  {{--  <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">--}}
 
     <script src="{{ asset('cpanel/js/modernizr.custom.js')}}"></script>
 
 
 
-    <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('cpanel/js/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ asset('cpanel/js/jquery-migrate-1.2.1.min.js') }}"></script>
+    <script src="{{ asset('cpanel/js/bootstrap.js') }}"></script>
     <script src="{{ asset('cpanel/js/custom.js')}}"></script>
 
 </head>
@@ -110,17 +111,17 @@
 <footer>
     <div>
         <p class="text-center admin">Panel de control | <a href="http://housecreations.com.ve" target="_blank">HouseCreations</a>
-            2016 &copy;</p>
+            <?php echo date("Y"); ?> &copy;</p>
     </div>
 </footer>
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script src="{{ asset('js/min/plugins.min.js') }}"></script>
+{{--<script src="{{ asset('js/min/plugins.min.js') }}"></script>
 <script src="{{ asset('js/medigo-custom.js') }}"></script>
 <script src="{{ asset('js/wow.min.js') }}"></script>
-<script src="{{ asset('js/validator.js') }}"></script>
+<script src="{{ asset('js/validator.js') }}"></script>--}}
 
 
 @yield('js')

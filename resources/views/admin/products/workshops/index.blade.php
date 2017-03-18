@@ -57,7 +57,7 @@
 
                             <th>Imagen</th>
                             <th>Título</th>
-                            <th>Acciones</th>
+                            <th style="width: 250px;">Acciones</th>
                             </thead>
                             <tbody>
                             @foreach($workshops as $workshop)
@@ -65,9 +65,10 @@
 
                                     <td><img src="/images/workshops/{{$workshop->image_url}}" alt="" class="thumbnail thumbnail-table"></td>
                                     <td>{{$workshop->name}}</td>
-                                    <td>
+                                    <td style="width: 250px;">
                                         <a href="" data-toggle="modal" data-workshop="{{$workshop->id}}" data-target="#showWorkshop" class='show_workshop'><span class="label label-default">Ver</span></a>
                                         <a href="" data-toggle="modal" data-workshop="{{$workshop->id}}" data-target="#editWorkshop" class='edit_workshop'><span class="label label-primary">Editar</span></a>
+                                        <a href="" data-toggle="modal" data-workshop="{{$workshop->id}}" data-target="#addDescription" class='add_description'><span class="label label-info">Descripción</span></a>
                                         <a href="" data-toggle="modal" data-workshop="{{$workshop->id}}" data-target="#deleteWorkshop" class='remove_workshop'><span class="label label-danger">Eliminar</span></a></td>
 
                                 </tr>
@@ -232,51 +233,30 @@
     </div>
 
 
-    <div class="modal fade" id="addWorkshopTopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="addDescription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Nuevo tema de taller</h4>
+                    <h4 class="modal-title" id="myModalLabel">Descripciones de taller</h4>
                 </div>
 
-                {!! Form::open(['route' => 'admin.templates.store', 'method' => 'POST' ]) !!}
+                {!! Form::open(['route' => ['admin.products.workshops.descriptions.update',0], 'method' => 'PUT' ]) !!}
 
+                {!! Form::hidden('workshop_id', null, ['id' => 'workshop_id']) !!}
                 <div class="modal-body">
-
-
-
-                    <div class="form-group">
-
-                        {!! Form::text('name', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nombre de la plantilla']) !!}
-                    </div>
-
-                    <div class="form-group">
-
-                        {!! Form::textarea('description', null, ['class' => 'form-control', 'size' => '20x5', 'required', 'placeholder' => 'Descripción de la plantilla']) !!}
-                    </div>
-
-                    <p>Propiedades</p>
+                    <p>Descripciones</p>
 
                     <div id="properties">
-                        <div class="form-group">
-                            <div class="input-group">
-                                {!! Form::text('option_1', null, ['class' => 'form-control', 'required', 'placeholder' => 'Agregue una propiedad como talla, color, entre otras', 'aria-describedby' => 'delete-form']) !!}
-                                <span class="input-group-addon" id="delete-form"><a href="#" class="removeForm"><span class="glyphicon glyphicon-remove-sign"
-                                                                                                                      aria-hidden="true"></span></a></span>
-                            </div>
-                        </div>
-
-
                     </div>
                     <div class="form-group">
-                        <a href="#" id="addPropertyLink">Agregar otra propiedad <i class="fa fa-plus-square"></i></a>
+                        <a href="#" id="addPropertyLink">Agregar otra descripción <i class="fa fa-plus-square"></i></a>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="button button-sm" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="button button-sm">Agregar</button>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success ">Guardar</button>
                 </div>
                 {!! Form::close() !!}
             </div>

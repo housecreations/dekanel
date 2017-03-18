@@ -4,6 +4,68 @@
 
 $(document).ready(function(){
 
+    $('#preloader').fadeOut('slow');
+    $('body').css({'overflow':'visible'});
+
+
+    $(".edit_carousel").on("click", function(ev){
+
+        var image_id = $(this).attr('data-image');
+
+        $('#edit_image_id').val(image_id);
+
+    });
+
+    $(".delete_carousel").on("click", function(ev){
+
+        var image_id = $(this).attr('data-image');
+
+        $('#delete_image_id').val(image_id);
+
+    });
+
+
+    $(".add_description").on("click", function(ev){
+
+        var workshop_id = $(this).attr('data-workshop');
+
+       $('#workshop_id').val(workshop_id);
+
+        $.ajax({
+            url: '/admin/products/workshops/description/' + workshop_id,
+            method: 'GET',
+            success: function(data){
+
+                $('#properties').html('');
+
+                if(data.workshopDescriptions.length === 0){
+
+                    $('#properties').append("<div class='form-group'><div class='input-group'><input class='form-control' required='required' placeholder='Agregue una descripción para el taller' name='option_1' type='text' aria-describedby = 'delete-form'>" +
+                        "<span class='input-group-addon' id='delete-form'><a href='#' class='removeForm'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span></a></span></div></div>");
+                }else{
+
+
+                    data.workshopDescriptions.forEach(function (description) {
+
+
+                       $('#properties').append("<div class='form-group'><div class='input-group'><input value='"+description.title+"' class='form-control' required='required' placeholder='Agregue una descripción para el taller' name='option_"+description.id+"' type='text' aria-describedby = 'delete-form'>" +
+                            "<span class='input-group-addon' id='delete-form'><a href='#' class='removeForm'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span></a></span></div></div>");
+
+
+                    });
+
+                }
+
+
+            },
+            error: function(err){
+                console.log(err);
+
+            }
+        });
+
+    });
+
 
     $(".edit_configuration").on("click", function(ev){
 
@@ -252,15 +314,19 @@ $(document).ready(function(){
           $id = 1;
         }
 
-        $('#properties').append("<div class='form-group'><div class='input-group'><input class='form-control' required='required' placeholder='Agregue una propiedad como talla, color, entre otras' name='option_"+$id+"' type='text' aria-describedby = 'delete-form'>" +
+        $('#properties').append("<div class='form-group' id='toFadeIn"+$id+"' style='display: none;'><div class='input-group'><input class='form-control' required='required' placeholder='Agregue una descripción para el taller' name='option_"+$id+"' type='text' aria-describedby = 'delete-form'>" +
             "<span class='input-group-addon' id='delete-form'><a href='#' class='removeForm'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span></a></span></div></div>");
+        $('#toFadeIn'+$id).fadeIn();
 
     });
 
     $('.removeForm').live('click', function (e) {
         e.preventDefault();
 
-       $(this).closest('.form-group').remove();
+       $(this).closest('.form-group').fadeOut( "slow", function() {
+          $(this).remove();
+       });
+       /* remove();*/
 
 
 

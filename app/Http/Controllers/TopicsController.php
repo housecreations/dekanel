@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SubTopic;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -88,6 +89,17 @@ class TopicsController extends Controller
         }
     }
 
+    public function showDescription(Request $request, $id)
+    {
+        if($request->ajax()){
+
+            $workshop = Topic::find($id);
+            $workshopDescriptions = $workshop->subTopics;
+
+            return response()->json(['workshopDescriptions' => $workshopDescriptions]);
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -126,6 +138,32 @@ class TopicsController extends Controller
         Flash::success("Taller actualizado");
 
         return back()->with('product', $workshop->product);
+
+
+    }
+
+    public function updateDescription(Request $request, $id)
+    {
+
+        $options = $request->except('_token', '_method', 'workshop_id');
+
+        $workshop = Topic::find($request->workshop_id);
+
+        $workshop->subTopics()->delete();
+
+        foreach ($options as $option){
+
+            $description = new SubTopic();
+            $description->title = $option;
+            $description->topic_id = $workshop->id;
+            $description->save();
+
+
+        }
+
+        Flash::success("Taller actualizado");
+
+        return back()->with('product', $workshop->product)->with('workshop', $workshop);
 
 
     }
