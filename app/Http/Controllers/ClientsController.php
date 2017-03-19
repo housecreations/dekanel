@@ -52,7 +52,7 @@ class ClientsController extends Controller
         }
 
         $client = new Client();
-        $client->description = $request->description;
+
         $client->logo_url = $name;
         $client->save();
 
@@ -109,7 +109,7 @@ class ClientsController extends Controller
 
         }
 
-        $client->description = $request->edit_description;
+
 
         $client->save();
 

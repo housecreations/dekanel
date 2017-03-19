@@ -59,7 +59,7 @@
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Descripción</th>
-                            <th>Especialidad</th>
+
                             <th style="width: 200px">Acciones</th>
                             </thead>
                             <tbody>
@@ -70,7 +70,7 @@
                                     <td>{{$consultant->name}}</td>
                                     <td>{{$consultant->last_name}}</td>
                                     <td>{{$consultant->description}}</td>
-                                    <td>{{$consultant->speciality}}</td>
+
 
 
                                     <td>
@@ -123,15 +123,12 @@
                             {!! Form::textarea('description', null, ['class' => 'form-control', 'size' => '20x5', 'required', 'placeholder' => 'Descripción del consultor']) !!}
                         </div>
 
-                        <div class="form-group">
 
-                            {!! Form::text('speciality', null, ['class' => 'form-control', 'required', 'placeholder' => 'Especialidad del consultor']) !!}
-                        </div>
 
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('profile_image_url', 'Imagen del consultor') !!}
+                        {!! Form::label('profile_image_url', 'Imagen del consultor (230x230)') !!}
                         {!! Form::file('profile_image_url', ['required']) !!}
 
                     </div>
@@ -152,7 +149,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">¿Está seguro que desea eliminar este consultor?</h4>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar consultor</h4>
                 </div>
 
                 {!! Form::open(['route' => ['admin.consultants.destroy', 0], 'method' => 'DELETE']) !!}
@@ -161,7 +158,7 @@
                 <div class="modal-body">
 
                     <div id="consultant-info">
-                        {{--Llenar con ajax--}}
+                        <p>¿Está seguro que desea eliminar este consultor?</p>
                     </div>
 
                 </div>
@@ -193,10 +190,12 @@
                             <img id="consultant-img" src="" alt="" class="thumbnail">
                         </div>
 
+                        <div class="col-md-8">
                         <p>Nombre: <span id="consultant-name"></span></p>
                         <p>Apellido: <span id="consultant-last-name"></span></p>
                         <p>Descripcion: <span id="consultant-description"></span></p>
-                        <p>Especialidad: <span id="consultant-speciality"></span></p>
+                        </div>
+
 
                     </div>
 
@@ -239,15 +238,12 @@
                             {!! Form::textarea('edit_description', null, ['class' => 'form-control', 'size' => '20x5', 'required', 'placeholder' => 'Descripción del consultor']) !!}
                         </div>
 
-                        <div class="form-group">
 
-                            {!! Form::text('edit_speciality', null, ['class' => 'form-control', 'required', 'placeholder' => 'Especialidad del consultor']) !!}
-                        </div>
 
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('edit_profile_image_url', 'Imagen del consultor') !!}
+                        {!! Form::label('edit_profile_image_url', 'Imagen del consultor (230x230)') !!}
                         {!! Form::file('edit_profile_image_url') !!}
 
                     </div>

@@ -6,6 +6,23 @@
 		box-sizing: border-box;
 }
 
+div#show-consultant-info {
+
+    display: inline-block;
+}
+
+div#show-product-info {
+    display: inline-block;
+}
+div#show-workshop-info-info {
+
+    display: inline-block;
+}
+
+.clients-logo{
+    width:20%;
+}
+
 .alert.alert-success.admin-alert {
     position: relative;
     top: 58px;

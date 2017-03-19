@@ -20,7 +20,7 @@
                 <div class="admin-slider">
 
                     <div class="col-md-12">
-                        <a href="{{ url('admin/')}}" class="btn btn-default">Atrás</a>
+                        <a href="{{ url('admin/products')}}" class="btn btn-default">Atrás</a>
                         <a data-toggle="modal" data-target="#addProduct" class="btn btn-success pull-right">Registrar nuevo producto</a>
                         <hr>
                     </div>
@@ -120,20 +120,21 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('image_url', 'Imagen del producto') !!}
+                        {!! Form::label('image_url', 'Imagen del producto (650x630)') !!}
                         {!! Form::file('image_url', ['required']) !!}
 
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('consultant_image_url', 'Imagen del consultor') !!}
+                        {!! Form::label('consultant_image_url', 'Imagen del consultor (450x1130)') !!}
                         {!! Form::file('consultant_image_url', ['required']) !!}
 
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('beside_image_url', 'Imagen lateral') !!}
+                        {!! Form::label('beside_image_url', 'Imagen lateral (360x360)') !!}
                         {!! Form::file('beside_image_url', ['required']) !!}
+
 
                     </div>
 
@@ -195,10 +196,10 @@
                             <img id="product-consultant-img" src="" alt="" class="thumbnail">
                             <img id="product-beside-img" src="" alt="" class="thumbnail">
                         </div>
-
+                        <div class="col-md-8">
                         <p>Nombre: <span id="product-name"></span></p>
                         <p>Descripcion: <span id="product-description"></span></p>
-
+                        </div>
                     </div>
 
                 </div>
@@ -239,20 +240,21 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('edit_image_url', 'Imagen del producto') !!}
+                        {!! Form::label('edit_image_url', 'Imagen del producto (650x630)') !!}
                         {!! Form::file('edit_image_url') !!}
 
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('edit_consultant_image_url', 'Imagen del consultor') !!}
+                        {!! Form::label('edit_consultant_image_url', 'Imagen del consultor (450x1130)') !!}
                         {!! Form::file('edit_consultant_image_url') !!}
 
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('edit_beside_image_url', 'Imagen lateral') !!}
+                        {!! Form::label('edit_beside_image_url', 'Imagen lateral (360x360)') !!}
                         {!! Form::file('edit_beside_image_url') !!}
+
 
                     </div>
 

@@ -24,8 +24,9 @@
     <link rel="stylesheet" href="css/owl.theme.css">
     <link rel="stylesheet" href="css/owl.carousel.css">
 
-    <link href='https://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">

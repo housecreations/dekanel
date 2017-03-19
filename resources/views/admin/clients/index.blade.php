@@ -56,18 +56,18 @@
                             <thead>
 
                             <th>Logo</th>
-                            <th>Descripción</th>
+
                             <th>Acciones</th>
                             </thead>
                             <tbody>
                             @foreach($clients as $client)
                                 <tr>
 
-                                    <td><img src="/images/clients/{{$client->logo_url}}" alt="" class="thumbnail thumbnail-table"></td>
-                                    <td>{{$client->description}}</td>
+                                    <td><img src="/images/clients/{{$client->logo_url}}" alt="" class="thumbnail clients-logo"></td>
+
                                     <td>
                                         <a href="" data-toggle="modal" data-client="{{$client->id}}" data-target="#editClient" class='edit_client'><span class="label label-primary">Editar</span></a>
-                                        <a href="" data-toggle="modal" data-client="{{$client->id}}" data-target="#showClient" class='show_client'><span class="label label-default">Ver</span></a>
+
                                         <a href="" data-toggle="modal" data-client="{{$client->id}}" data-target="#deleteClient" class='remove_client'><span class="label label-danger">Eliminar</span></a></td>
 
                                 </tr>
@@ -102,10 +102,6 @@
                     <div class="to-hide">
 
 
-                        <div class="form-group">
-
-                            {!! Form::textarea('description', null, ['class' => 'form-control', 'size' => '20x5', 'required', 'placeholder' => 'Descripción del cliente']) !!}
-                        </div>
 
 
                     </div>
@@ -172,7 +168,7 @@
                         <div class="col-md-4 text-center">
                             <img id="client-img" src="" alt="" class="thumbnail">
                         </div>
-                        <p>Descripcion: <span id="client-description"></span></p>
+
 
                         <br><br><br>
 
@@ -203,10 +199,7 @@
 
                     <div class="to-hide">
 
-                        <div class="form-group">
 
-                            {!! Form::textarea('edit_description', null, ['class' => 'form-control', 'size' => '20x5', 'required', 'placeholder' => 'Descripción del cliente']) !!}
-                        </div>
 
                     </div>
 

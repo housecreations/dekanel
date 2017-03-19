@@ -83,19 +83,19 @@
                     <p class="intro">Somos un equipo de consultores integrales con más de 20 años impulsando el desarrollo de las personas y organizaciones.
                     </p>
 
-                    <p>DISEÑAMOS programas de formación y talleres orientados a inspirar a la gente y a los equipos para obtener los mejores resultados.</p>
+                    <p><span class="bolder">DISEÑAMOS</span> programas de formación y talleres orientados a inspirar a la gente y a los equipos para obtener los mejores resultados.</p>
                     <hr class="hr-md">
 
-                    <p>UTILIZAMOS técnicas tradicionales de aprendizaje experiencial y disciplinas de última generación.</p>
+                    <p><span class="bolder">UTILIZAMOS</span> técnicas tradicionales de aprendizaje experiencial y disciplinas de última generación.</p>
                     <hr class="hr-md">
 
-                    <p>CONTAMOS con un equipo profesional especializado, creativo y en constante actualización.</p>
+                    <p><span class="bolder">CONTAMOS</span> con un equipo profesional especializado, creativo y en constante actualización.</p>
                     <hr class="hr-md">
 
-                    <p>MANEJAMOS metodologías para la construcción de relaciones y el desarrollo cultural de las personas.</p>
+                    <p><span class="bolder">MANEJAMOS</span> metodologías para la construcción de relaciones y el desarrollo cultural de las personas.</p>
                     <hr class="hr-md">
 
-                    <p>BUSCAMOS cambios positivos que perduren en las organizaciones.</p>
+                    <p><span class="bolder">BUSCAMOS</span> cambios positivos que perduren en las organizaciones.</p>
 
 
                 </div>
@@ -153,46 +153,6 @@
                 </div>
 
             </div>
-
-
-
-
-
-          {{--  <div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="0.4s">
-                <h2>Our Mobile App Team</h2>
-                <h3 class="wow fadeInUp" data-wow-delay="0.8s">App Starter page is provided by templatemo that can be used for any site.</h3>
-                <p class="wow fadeInUp" data-wow-delay="0.4s">This is a responsive <a href="https://plus.google.com/+templatemo" target="_blank">HTML CSS template</a> designed for your mobile app pages. You can modify and use it to fit your needs.</p>
-            </div>
-
-            <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.4s">
-                <div class="about-thumb">
-                    <img src="images/team-img1.jpg" class="img-responsive" alt="Team">
-                    <div class="about-overlay">
-                        <h3>Sandar Lynn</h3>
-                        <h4>UI Designer</h4>
-                        <ul class="social-icon">
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>--}}
-
-            {{--<div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.4s">
-                <div class="about-thumb">
-                    <img src="images/team-img2.jpg" class="img-responsive" alt="Team">
-                    <div class="about-overlay">
-                        <h3>Candy </h3>
-                        <h4>UX Specialist</h4>
-                        <ul class="social-icon">
-                            <li><a href="#" class="fa fa-pinterest"></a></li>
-                            <li><a href="#" class="fa fa-behance"></a></li>
-                            <li><a href="#" class="fa fa-google-plus"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>--}}
 
         </div>
     </div>
@@ -280,7 +240,7 @@
                         <div class="col-md-8">
 
                             <p class="consultants-name">{{$consultant->name}} {{$consultant->last_name}}</p>
-                            <p class="consultants-speciality">{{$consultant->speciality}}</p>
+
                             <p class="consultants-description">{{$consultant->description}}</p>
                         </div>
 

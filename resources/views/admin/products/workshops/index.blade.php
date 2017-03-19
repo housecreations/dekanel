@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('image_url', 'Imagen del taller') !!}
+                        {!! Form::label('image_url', 'Imagen del taller (270x240)') !!}
                         {!! Form::file('image_url', ['required']) !!}
 
                     </div>
@@ -176,10 +176,10 @@
                         <div class="col-md-4 text-center">
                             <img id="workshop-img" src="" alt="" class="thumbnail">
                         </div>
-
+                        <div class="col-md-8">
                         <p>Nombre: <span id="workshop-name"></span></p>
-
-                        <br><br>
+                        </div>
+                        
 
                     </div>
 
@@ -216,7 +216,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('edit_image_url', 'Imagen del taller') !!}
+                        {!! Form::label('edit_image_url', 'Imagen del taller (270x240)') !!}
                         {!! Form::file('edit_image_url') !!}
 
                     </div>

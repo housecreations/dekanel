@@ -264,7 +264,7 @@ $(document).ready(function(){
              $('#consultant-name').html(data.consultant.name);
              $('#consultant-last-name').html(data.consultant.last_name);
              $('#consultant-description').html(data.consultant.description);
-             $('#consultant-speciality').html(data.consultant.speciality);
+
              $('#consultant-img').attr('src', '/images/consultants/'+data.consultant.profile_image_url);
 
             },

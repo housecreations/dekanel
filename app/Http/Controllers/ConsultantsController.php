@@ -55,7 +55,6 @@ class ConsultantsController extends Controller
         $consultant->name = $request->name;
         $consultant->last_name = $request->last_name;
         $consultant->description = $request->description;
-        $consultant->speciality = $request->speciality;
         $consultant->profile_image_url = $name;
         $consultant->save();
 
@@ -115,7 +114,7 @@ class ConsultantsController extends Controller
         $consultant->name = $request->edit_name;
         $consultant->last_name = $request->edit_last_name;
         $consultant->description = $request->edit_description;
-        $consultant->speciality = $request->edit_speciality;
+
         $consultant->save();
 
         Flash::success("Consultor actualizado");
