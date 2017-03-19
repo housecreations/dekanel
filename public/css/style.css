@@ -5,6 +5,31 @@ App Starter Template
 http://www.templatemo.com/tm-492-app-starter
 
 */
+img.slider-img {
+  height: 80vh;
+  width: 100%;
+}
+
+.sl-slider {
+  height: 80vh !important;
+}
+
+.sl-slider-wrapper {
+
+  height: 80vh !important;
+
+
+}
+.slider-container {
+  height: 80vh;
+  margin-top: 4.5%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+
+
 
 img.consultant-img {
   height: 150px;
@@ -71,11 +96,32 @@ width: 100px;
   height: 100px;
 }
 
+.owl-carousel .owl-wrapper-outer {
+
+  padding-top: 50px;
+}
+
+.item.col-md-12.text-center.wow.fadeInUp.animated {
+  border-right: 3px solid grey;
+}
+
 .col-md-2-4 {
   width: 20%;
   float: left;
   margin-top: 35px;
   border-right: 3px solid #e4552f;
+}
+
+img.img-clients {
+  width: 100px;
+  height: 100px;
+}
+
+.col-md-2-5{
+  width: 20%;
+  float: left;
+  margin-top: 35px;
+  border-right: 3px solid #d6cac7;
 }
 
 .col-md-10, .col-md-3, .col-md-2{
@@ -104,23 +150,49 @@ p.number-work {
 
 }
 #about{
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 60px;
   background: #fad040;
 
 }
 
 #products{
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 60px;
   background: white;
 
 }
 #consultants{
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 60px;
   background: #008da5;
 
+}
+
+#clients{
+  padding-top: 20px;
+  padding-bottom: 80px;
+  background: white;
+
+}
+#contact{
+  padding-top: 20px;
+  padding-bottom: 80px;
+  background: #aba9af;
+
+}
+
+footer{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: white;
+
+}
+
+.col-md-12.contact-info {
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
 }
 
 
@@ -308,9 +380,62 @@ p {
   line-height: normal;
 }
 
-#about .section-title h2{
+#about .section-title h2, #clients .section-title h2{
 
   color: #008da5;
+
+}
+
+.padding-bottom{
+
+  padding-bottom: 10px;
+}
+.info-red{
+
+  background-color: #e4552f;
+  padding: 5px 10px 5px 10px;
+
+}
+
+.info-yellow{
+
+  background-color: #fad040;
+  padding: 5px 8px 5px 8px;
+
+}
+
+.info-green{
+
+  background-color: #008da5;
+  padding: 5px 13px 5px 14px;
+
+}
+
+.info-dark-blue{
+
+  background-color: #05377f;
+  padding: 5px 13px 5px 14px;
+
+}
+
+
+.info-blue{
+
+  background-color: #0078b9;
+  padding: 5px 10px 5px 10px;
+
+}
+
+.dk-link, .dk-link:visited{
+
+  color:white;
+
+
+}
+.dk-link:hover{
+
+  color: #d0cfce;
+
 
 }
 
@@ -320,11 +445,19 @@ p {
 
 }
 
-#consultants .section-title h2{
+#consultants .section-title h2, #contact .section-title h2{
 
   color: white;
 
 }
+
+.col-md-1.square {
+  background-color: blue;
+  height: 36px;
+  /* width: 100%; */
+}
+
+
 
 
 #screenshot,
@@ -465,14 +598,14 @@ p {
 -----------------------------------------*/
 
 #home {
-    background: #535bd4 url('../images/home-bg.jpg') no-repeat;
+
     background-size: cover;
     background-position: center center;
     color: #ffffff;
-    display: -webkit-box;
+  /*  display: -webkit-box;
     display: -webkit-flex;
-     display: -ms-flexbox;
-    display: flex;
+     display: -ms-flexbox;*/
+    display: block;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
@@ -496,7 +629,7 @@ p {
 
 #home img {
   width: 100%;
-  height: auto;
+
 }
 
 #home .home-thumb {
@@ -958,7 +1091,7 @@ footer p {
 }
 
 .go-top:hover {
-    background: #535bd4;
+    background: #5f5f5f;
     color: #ffffff;
 }
 
@@ -983,7 +1116,7 @@ footer p {
   }
 
   #home, #home .overlay {
-    height: 60vh;
+    height: 80vh;
   }
 
   #home .home-thumb {
@@ -1040,8 +1173,36 @@ footer p {
   }
 
   #home, #home .overlay {
-    height: 100vh;
+    height: 80vh;
+    padding-top: 35px;
   }
+
+/*responsive dekanel*/
+  img.logo-position {
+    max-width: 100%;
+    width: 110px;
+    margin-top: -10px;
+  }
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+
+    margin-top: 20px;
+  }
+  .navbar-default .navbar-nav li a {
+    line-height: 0px;
+  }
+
+  .navbar-nav>li>a {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    line-height: 20px;
+  }
+
+
+  .navbar {
+    min-height: 70px;
+  }
+
+
 
   #home img {
     position: relative;

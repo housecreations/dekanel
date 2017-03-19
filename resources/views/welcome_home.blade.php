@@ -9,26 +9,52 @@
 
 <!-- Home Section -->
 
-<section id="home" class="main">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
 
-            <div class="wow fadeInUp col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0" data-wow-delay="0.2s">
-                <img src="images/home-img.png" class="img-responsive" alt="Home">
-            </div>
 
-            <div class="col-md-6 col-sm-7 col-xs-12">
-                <div class="home-thumb">
-                    <h1 class="wow fadeInUp" data-wow-delay="0.6s">App Starter Page</h1>
-                    <p class="wow fadeInUp" data-wow-delay="0.8s">The optimal way to present your beautiful mobile app for your startup team. Let us create amazing things!</p>
-                    <a href="#pricing" class="wow fadeInUp section-btn btn btn-success smoothScroll" data-wow-delay="1s">Download App</a>
+<section id="home">
+
+
+
+<div class="slider-container">
+            <div id="slider" class="sl-slider-wrapper">
+
+                <!--Slider Items-->
+                <div class="sl-slider">
+
+                @foreach($carousel as $image)
+                    <!--Slider Item2-->
+                        <div class="sl-slide item2" data-orientation="vertical" data-slice1-rotation="0" data-slice2-rotation="0" data-slice1-scale="1.5" data-slice2-scale="1.5">
+                            <div class="sl-slide-inner">
+                                <div class="">
+
+                                        <img class="slider-img" src="/images/carousel/{{$image->image_url}}" alt="Imagen {{$image->id}}" />
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
                 </div>
-            </div>
+                <!--/Slider Items-->
 
-        </div>
-    </div>
-</section>
+                <!--Slider Next Prev button-->
+                <nav id="nav-arrows" class="nav-arrows">
+                    <span class="nav-arrow-prev"><i class="fa fa-angle-left"></i></span>
+                    <span class="nav-arrow-next"><i class="fa fa-angle-right"></i></span>
+                </nav>
+                <!--/Slider Next Prev button-->
+
+            </div>
+            <!-- /slider-wrapper -->
+
+</div>
+
+
+
+       </section>
+
+
+
 
 
 <!-- About Section -->
@@ -38,7 +64,7 @@
         <div class="row">
 
             <div class="col-md-12 col-sm-12">
-                <div class="wow bounceIn section-title">
+                <div class=" section-title">
                     <h2>Nosotros</h2>
 
                 </div>
@@ -75,14 +101,14 @@
             </div>
 
             <div class="col-md-12 col-sm-12">
-                <div class="wow bounceIn section-title">
+                <div class=" section-title">
                     <h2>¿Cómo trabajamos?</h2>
                 </div>
             </div>
 
             <div class="col-md-12 col-sm-12 how-we-work">
 
-                <div class="col-md-3 col-sm-3">
+                <div class="col-md-3 col-sm-3 wow fadeIn" data-wow-delay="0.3s">
                     <div class="col-md-2">
                         <p class="number-work">1</p>
                     </div>
@@ -91,7 +117,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-3 col-sm-3">
+                <div class="col-md-3 col-sm-3 wow fadeIn" data-wow-delay="0.6s">
 
                     <div class="col-md-2">
                         <p class="number-work">2</p>
@@ -101,7 +127,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-3 col-sm-3">
+                <div class="col-md-3 col-sm-3 wow fadeIn" data-wow-delay="0.9s">
 
                     <div class="col-md-2">
                         <p class="number-work">3</p>
@@ -111,7 +137,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-3 col-sm-3">
+                <div class="col-md-3 col-sm-3 wow fadeIn" data-wow-delay="1.2s">
 
                     <div class="col-md-2">
                         <p class="number-work">4</p>
@@ -177,7 +203,7 @@
 
 
             <div class="col-md-12 col-sm-12">
-                <div class="wow bounceIn section-title">
+                <div class="w section-title">
                     <h2>Nuestros productos</h2>
 
                 </div>
@@ -231,8 +257,8 @@
 
 
             <div class="col-md-12 col-sm-12">
-                <div class="wow bounceIn section-title">
-                    <h2>Nuestros consultores</h2>
+                <div class=" section-title">
+                    <h2>Nuestros Consultores</h2>
 
                 </div>
             </div>
@@ -268,67 +294,38 @@
 
 <!-- Screenshot Section -->
 
-<section id="screenshot">
+<section id="clients">
     <div class="container">
         <div class="row">
 
-            <div class="col-md-offset-2 col-md-8 col-sm-12">
-                <div class="section-title">
-                    <h1>App Screenshots</h1>
-                    <p class="wow fadeInUp" data-wow-delay="0.8s">Nulla nisi purus, ultrices et scelerisque at, ullamcorper et ex. Phasellus at nisi lobortis, semper tortor sed, gravida neque.</p>
+            <div class="col-md-12 col-sm-12">
+                <div class=" section-title">
+                    <h2>Nuestros Clientes</h2>
+
                 </div>
             </div>
 
             <!-- Screenshot Owl Carousel -->
             <div id="screenshot-carousel" class="owl-carousel">
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img1.jpg" class="image-popup">
-                        <img src="images/screenshot-img1.jpg" class="img-responsive" alt="screenshot">
-                    </a>
+
+
+                @foreach($clients as $client)
+
+                <div class="item col-md-12 text-center wow fadeInUp" data-wow-delay="0.9s">
+
+                        <img src="/images/clients/{{$client->logo_url}}" class="img-clients" alt="screenshot">
+
                 </div>
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img2.jpg" class="image-popup">
-                        <img src="images/screenshot-img2.jpg" class="img-responsive" alt="screenshot">
-                    </a>
-                </div>
+                @endforeach
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img3.jpg" class="image-popup">
-                        <img src="images/screenshot-img3.jpg" class="img-responsive" alt="screenshot">
-                    </a>
-                </div>
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img4.jpg" class="image-popup">
-                        <img src="images/screenshot-img4.jpg" class="img-responsive" alt="screenshot">
-                    </a>
-                </div>
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img5.jpg" class="image-popup">
-                        <img src="images/screenshot-img5.jpg" class="img-responsive" alt="screenshot">
-                    </a>
-                </div>
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img6.jpg" class="image-popup">
-                        <img src="images/screenshot-img6.jpg" class="img-responsive" alt="screenshot">
-                    </a>
-                </div>
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img7.jpg" class="image-popup">
-                        <img src="images/screenshot-img7.jpg" class="img-responsive" alt="screenshot">
-                    </a>
-                </div>
 
-                <div class="item col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.9s">
-                    <a href="images/screenshot-img8.jpg" class="image-popup">
-                        <img src="images/screenshot-img8.jpg" class="img-responsive" alt="screenshot">
-                    </a>
-                </div>
+
 
             </div>
 
@@ -339,63 +336,65 @@
 
 <!-- Pricing Section -->
 
-<section id="pricing">
+<section id="contact">
     <div class="container">
         <div class="row">
 
             <div class="col-md-12 col-sm-12">
-                <div class="section-title">
-                    <h1>App Pricing</h1>
-                    <hr>
+                <div class=" section-title">
+                    <h2>Contáctenos</h2>
+
                 </div>
             </div>
 
-            <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.4s">
-                <div class="pricing-plan">
-                    <div class="pricing-month">
-                        <h2>$60</h2>
-                    </div>
-                    <div class="pricing-title">
-                        <h3>Starter</h3>
-                    </div>
-                    <p>40 Users</p>
-                    <p>10GB per user</p>
-                    <p>Unlimited Support</p>
-                    <p>1 Year License</p>
-                    <button class="btn btn-default section-btn">Register now</button>
-                </div>
-            </div>
+            <div class="col-md-12 contact-info">
 
-            <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
-                <div class="pricing-plan">
-                    <div class="pricing-month">
-                        <h2>$120</h2>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="col-md-12 padding-bottom">
+<div class="col-md-2">
+                            <i class="fa fa-phone info-red"></i>
+</div>
+                            <div class="col-md-10">  {{App\ApplicationInformation::whereOption('phone_number')->first()->value}}
+                            </div>
                     </div>
-                    <div class="pricing-title">
-                        <h3>Business</h3>
+                    <div class="col-md-12 padding-bottom">
+                        <div class="col-md-2">
+                        <i class="fa fa-paper-plane info-yellow"></i>
+                        </div>
+                        <div class="col-md-10">
+                        {{App\ApplicationInformation::whereOption('email')->first()->value}}
+                        </div>
                     </div>
-                    <p>100 Users</p>
-                    <p>20GB per user</p>
-                    <p>Unlimited Support</p>
-                    <p>2 Years License</p>
-                    <button class="btn btn-default section-btn">Register now</button>
-                </div>
-            </div>
 
-            <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.8s">
-                <div class="pricing-plan">
-                    <div class="pricing-month">
-                        <h2>$200</h2>
+                    <div class="col-md-12 padding-bottom">
+                        <div class="col-md-2">
+                        <i class="fa fa-map-marker info-green"></i>
+                        </div>
+                        <div class="col-md-10">
+                        {{App\ApplicationInformation::whereOption('address')->first()->value}}
+                        </div>
                     </div>
-                    <div class="pricing-title">
-                        <h3>Advanced</h3>
-                    </div>
-                    <p>200 Users</p>
-                    <p>30GB per user</p>
-                    <p>Unlimted Support</p>
-                    <p>3 Years License</p>
-                    <button class="btn btn-default section-btn">Register now</button>
                 </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 padding-bottom">
+                        <div class="col-md-2">
+                            <i class="fa fa-linkedin info-blue"></i>
+                        </div>
+                        <div class="col-md-10">
+                        <a class="dk-link" href="{{App\ApplicationInformation::whereOption('linked_in_url')->first()->value}}">Linked In</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padding-bottom">
+                        <div class="col-md-2">
+                            <i class="fa fa-facebook-f info-dark-blue"></i>
+                        </div>
+                        <div class="col-md-10">
+                        <a class="dk-link" href="{{App\ApplicationInformation::whereOption('facebook_url')->first()->value}}">Facebook</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -403,32 +402,5 @@
 </section>
 
 
-<!-- Newsletter Section -->
-
-<section id="newsletter">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-offset-2 col-md-8 col-sm-12">
-                <div class="wow bounceIn section-title">
-                    <h2>Subscribe Newsletter</h2>
-                    <p class="wow fadeInUp" data-wow-delay="0.5s">Maecenas orci sem, mollis quis risus a, venenatis condimentum felis. Integer ut bibendum ipsum. Etiam a tristique sapien, ut dictum augue.</p>
-                </div>
-                <div class="wow fadeInUp newsletter-form" data-wow-delay="0.8s">
-                    <form action="#" method="post">
-                        <div class="col-md-8 col-sm-7">
-                            <input name="email" type="email" class="form-control" id="email" placeholder="Your Email here">
-                        </div>
-                        <div class="col-md-4 col-sm-5">
-                            <input name="submit" type="submit" class="form-control" id="submit" value="Send Newsletter">
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 
 @endsection

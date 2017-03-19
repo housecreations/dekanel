@@ -60,7 +60,7 @@
                             <th>Apellido</th>
                             <th>Descripción</th>
                             <th>Especialidad</th>
-                            <th>Acciones</th>
+                            <th style="width: 200px">Acciones</th>
                             </thead>
                             <tbody>
                             @foreach($consultants as $consultant)

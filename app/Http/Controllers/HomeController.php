@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Consultant;
 use App\Http\Requests;
 use App\Product;
+use App\Client;
+use App\CarouselImage;
 use Illuminate\Http\Request;
 
 use App\ApplicationInformation;
@@ -82,6 +84,10 @@ class HomeController extends Controller
 
         $consultants = Consultant::all();
 
-        return view('welcome_home', ['products' => $products, 'consultants' => $consultants]);
+        $clients = Client::all();
+
+        $carousel = CarouselImage::all();
+
+        return view('welcome_home', ['products' => $products, 'consultants' => $consultants, 'clients' => $clients, 'carousel' => $carousel]);
     }
 }

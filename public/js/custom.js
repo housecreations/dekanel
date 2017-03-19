@@ -47,7 +47,7 @@
     
    $(document).ready(function() {
     $("#screenshot-carousel").owlCarousel({
-      items : 4,
+      items : 5,
       itemsDesktop : [1199,3],
       itemsDesktopSmall : [979,3],
       slideSpeed: 300,

@@ -30,6 +30,11 @@
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
 
+    <!--Slider-->
+    <link rel="stylesheet" href="{{ asset('css/slider/sl-slide.css')}}">
+    <script src="{{ asset('js/slider/modernizr.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('css/slider/flexslider.css')}}">
+
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
@@ -52,7 +57,7 @@
                 <span class="icon icon-bar"></span>
                 <span class="icon icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand"><img src="/images/dekanel-logo.png" alt="" class="logo-position"></a>
+            <a href="/" class="navbar-brand"><img src="/images/dekanel-logo.png" alt="" class="logo-position"></a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -60,8 +65,8 @@
                 <li><a href="#about" class="smoothScroll">Nosotros</a></li>
                 <li><a href="#products" class="smoothScroll">Productos</a></li>
                 <li><a href="#consultants" class="smoothScroll">Consultores</a></li>
-                <li><a href="#pricing" class="smoothScroll">Clientes</a></li>
-                <li><a href="#newsletter" class="smoothScroll">Contacto</a></li>
+                <li><a href="#clients" class="smoothScroll">Clientes</a></li>
+                <li><a href="#contact" class="smoothScroll">Contacto</a></li>
         
             </ul>
         </div>
@@ -78,23 +83,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-8 col-sm-6">
-                <div class="wow fadeInUp footer-copyright" data-wow-delay="0.4s">
-                    <p>Copyright &copy; 2016 Your App Starter
-                        <span>||</span>
-                        Design: <a href="https://plus.google.com/+templatemo" title="free css templates" target="_blank">Templatemo</a></p>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <ul class="wow fadeInUp social-icon" data-wow-delay="0.8s">
-                    <li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-google-plus"></a></li>
-                    <li><a href="#" class="fa fa-dribbble"></a></li>
-                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                </ul>
-            </div>
+            <a href="index.html" class=""><img src="/images/dekanel-logo.png" alt="" class="logo-position"></a>
 
         </div>
     </div>
@@ -118,6 +107,55 @@
 <script src="js/smoothscroll.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/custom.js"></script>
+
+
+
+
+<!-- Required javascript files for Slider -->
+
+<script src="js/slider/jquery.ba-cond.min.js"></script>
+<script src="js/slider/jquery.slitslider.js"></script>
+<!-- /Required javascript files for Slider -->
+
+<!-- SL Slider -->
+<script type="text/javascript">
+    $(function() {
+        var Page = (function() {
+
+            var $navArrows = $( '#nav-arrows' ),
+                slitslider = $( '#slider' ).slitslider( {
+                    autoplay : false
+                } ),
+
+                init = function() {
+                    initEvents();
+                },
+                initEvents = function() {
+                    $navArrows.children( ':last' ).on( 'click', function() {
+                        slitslider.next();
+                        return false;
+                    });
+
+                    $navArrows.children( ':first' ).on( 'click', function() {
+                        slitslider.previous();
+                        return false;
+                    });
+                };
+
+            return { init : init };
+
+        })();
+
+        Page.init();
+    });
+</script>
+
+
+
+
+
+
+
 
 </body>
 </html>
