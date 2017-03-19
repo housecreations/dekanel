@@ -14,6 +14,10 @@
 Route::get('/', [
     'uses' => 'HomeController@index']);
 
+Route::get('/products/{slug}', [
+    'as' => 'products.show',
+    'uses' => 'HomeController@productShow']);
+
 
 Route::auth();
 

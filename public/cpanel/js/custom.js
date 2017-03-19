@@ -159,7 +159,8 @@ $(document).ready(function(){
                 $('#product-name').html(data.product.name);
                 $('#product-description').html(data.product.description);
                 $('#product-img').attr('src', '/images/products/'+data.product.image_url);
-                $('#product-consultant-img').attr('src', '/images/products/'+data.product.consultant_image_url);
+                $('#product-consultant-img').attr('src', '/images/products/consultants/'+data.product.consultant_image_url);
+                $('#product-beside-img').attr('src', '/images/products/beside/'+data.product.beside_image_url);
             },
             error: function(err){
                 console.log(err);

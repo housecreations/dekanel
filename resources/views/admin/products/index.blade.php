@@ -56,7 +56,7 @@
                             <thead>
 
                             <th>Imagen</th>
-                            <th>Imagen consultor</th>
+
                             <th>Título</th>
                             <th>Descripción</th>
                             <th style="width: 300px;">Acciones</th>
@@ -66,8 +66,7 @@
                                 <tr>
 
                                     <td><img src="/images/products/{{$product->image_url}}" alt="" class="thumbnail thumbnail-table"></td>
-                                    <td><img src="/images/products/{{$product->consultant_image_url}}" alt="" class="thumbnail thumbnail-table"></td>
-                                    <td>{{$product->name}}</td>
+                                   <td>{{$product->name}}</td>
                                     <td>{{$product->short_description}}</td>
                                     <td>
                                         <a href="" data-toggle="modal" data-product="{{$product->id}}" data-target="#showProduct" class='show_product'><span class="label label-default">Ver</span></a>
@@ -132,6 +131,12 @@
 
                     </div>
 
+                    <div class="form-group">
+                        {!! Form::label('beside_image_url', 'Imagen lateral') !!}
+                        {!! Form::file('beside_image_url', ['required']) !!}
+
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
@@ -188,6 +193,7 @@
                         <div class="col-md-4 text-center">
                             <img id="product-img" src="" alt="" class="thumbnail">
                             <img id="product-consultant-img" src="" alt="" class="thumbnail">
+                            <img id="product-beside-img" src="" alt="" class="thumbnail">
                         </div>
 
                         <p>Nombre: <span id="product-name"></span></p>
@@ -241,6 +247,12 @@
                     <div class="form-group">
                         {!! Form::label('edit_consultant_image_url', 'Imagen del consultor') !!}
                         {!! Form::file('edit_consultant_image_url') !!}
+
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('edit_beside_image_url', 'Imagen lateral') !!}
+                        {!! Form::file('edit_beside_image_url') !!}
 
                     </div>
 

@@ -6,6 +6,31 @@
 		box-sizing: border-box;
 }
 
+.alert.alert-success.admin-alert {
+    position: relative;
+    top: 58px;
+    width: 50%;
+    /* top: 100px; */
+    /* position: relative; */
+    /* width: 50%; */
+    left: 25%;
+    /* padding: 15px; */
+    /* margin-bottom: 5px; */
+    /* border: 1px solid transparent; */
+    /* border-radius: 4px; */
+}
+
+.alert {
+    top: 10px;
+}
+
+.alert-success {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 3px;
+}
+
 body {
     background: #ffffff;
     font-size: 16px;

@@ -72,7 +72,11 @@
 
 
             <div class="col-md-12">
-                <div class="col-md-6"></div>
+                <div class="col-md-6">
+
+                    <img src="/images/foto-grupal.png" alt="" class="photo-group">
+
+                </div>
 
                 <div class="col-md-6">
 
@@ -233,7 +237,7 @@
 
                     <div class="col-md-12 text-center">
 
-                        <a href="#" class="product-link">Ver +</a>
+                        <a href="{{route('products.show', $product->slug)}}" class="product-link">Ver +</a>
 
                     </div>
 

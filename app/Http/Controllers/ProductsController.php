@@ -75,12 +75,22 @@ class ProductsController extends Controller
 
             $file = $request->file('consultant_image_url');
             $consultant_name = 'Dekanel_Consulant_' . time() . "." . $file->getClientOriginalExtension();
-            $path = 'images/products/';
+            $path = 'images/products/consultants/';
             $file->move($path, $consultant_name);
 
         }
 
         $product->consultant_image_url = $consultant_name;
+
+        if ($request->file('beside_image_url')) {
+            $file = $request->file('beside_image_url');
+            $beside_name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
+            $path = 'images/products/beside/';
+            $file->move($path, $beside_name);
+
+            $product->beside_image_url = $beside_name;
+
+        }
 
         $product->save();
 
@@ -153,10 +163,19 @@ class ProductsController extends Controller
         if ($request->file('edit_consultant_image_url')) {
             $file = $request->file('edit_consultant_image_url');
             $consultant_name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
-            $path = 'images/products/';
+            $path = 'images/products/consultants/';
             $file->move($path, $consultant_name);
 
             $product->consultant_image_url = $consultant_name;
+
+        }
+        if ($request->file('edit_beside_image_url')) {
+            $file = $request->file('edit_beside_image_url');
+            $beside_name = 'Dekanel_' . time() . "." . $file->getClientOriginalExtension();
+            $path = 'images/products/beside/';
+            $file->move($path, $beside_name);
+
+            $product->beside_image_url = $beside_name;
 
         }
 

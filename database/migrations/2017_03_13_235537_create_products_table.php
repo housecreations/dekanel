@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('image_url');
             $table->string('consultant_image_url');
+            $table->string('beside_image_url');
             $table->string('name');
             $table->longText('description');
             $table->longText('short_description');

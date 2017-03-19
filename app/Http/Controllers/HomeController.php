@@ -90,4 +90,13 @@ class HomeController extends Controller
 
         return view('welcome_home', ['products' => $products, 'consultants' => $consultants, 'clients' => $clients, 'carousel' => $carousel]);
     }
+
+    public function productShow($slug)
+    {
+
+        $product = Product::findBySlug($slug);
+
+        return view('products')->with('product', $product);
+
+    }
 }
