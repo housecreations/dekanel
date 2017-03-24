@@ -1,5 +1,4 @@
 
-
   /*-------------------------------------------------------------------------------
     PRE LOADER
   -------------------------------------------------------------------------------*/
@@ -47,12 +46,18 @@
     
    $(document).ready(function() {
     $("#screenshot-carousel").owlCarousel({
-      items : 5,
+      items : 4,
       itemsDesktop : [1199,3],
-      itemsDesktopSmall : [979,3],
+      itemsDesktopSmall : [979,3], 
       slideSpeed: 300,
+      itemsMobile : [479,3],
+     
     });
   });
+
+
+
+
   
   
    $(document).ready(function() {

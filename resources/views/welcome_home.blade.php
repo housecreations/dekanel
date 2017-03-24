@@ -276,7 +276,7 @@
 
                 @foreach($clients as $client)
 
-                <div class="item col-md-12 text-center wow fadeInUp" data-wow-delay="0.9s">
+                <div class="item col-md-12 text-center wow fadeInUp" data-wow-delay="0.4s">
 
                         <img src="/images/clients/{{$client->logo_url}}" class="img-clients" alt="screenshot">
 
@@ -327,7 +327,9 @@
                         <i class="fa fa-paper-plane info-yellow"></i>
                         </div>
                         <div class="col-md-10">
+                        <a class="dk-link" href="mailto:{{App\ApplicationInformation::whereOption('email')->first()->value}}">
                         {{App\ApplicationInformation::whereOption('email')->first()->value}}
+</a>
                         </div>
                     </div>
 
@@ -336,7 +338,9 @@
                         <i class="fa fa-map-marker info-green"></i>
                         </div>
                         <div class="col-md-10">
+
                         {{App\ApplicationInformation::whereOption('address')->first()->value}}
+
                         </div>
                     </div>
                 </div>
@@ -346,7 +350,7 @@
                             <i class="fa fa-linkedin info-blue"></i>
                         </div>
                         <div class="col-md-10">
-                        <a class="dk-link" href="{{App\ApplicationInformation::whereOption('linked_in_url')->first()->value}}">Linked In</a>
+                        <a class="dk-link" target="_blank" href="{{App\ApplicationInformation::whereOption('linked_in_url')->first()->value}}">Linked In</a>
                         </div>
                     </div>
                     <div class="col-md-12 padding-bottom">
@@ -354,7 +358,7 @@
                             <i class="fa fa-facebook-f info-dark-blue"></i>
                         </div>
                         <div class="col-md-10">
-                        <a class="dk-link" href="{{App\ApplicationInformation::whereOption('facebook_url')->first()->value}}">Facebook</a>
+                        <a class="dk-link" target="_blank" href="{{App\ApplicationInformation::whereOption('facebook_url')->first()->value}}">Facebook</a>
                         </div>
                     </div>
                 </div>

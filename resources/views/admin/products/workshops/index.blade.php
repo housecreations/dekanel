@@ -63,7 +63,7 @@
                             @foreach($workshops as $workshop)
                                 <tr>
 
-                                    <td><img src="/images/workshops/{{$workshop->image_url}}" alt="" class="thumbnail thumbnail-table"></td>
+                                    <td><img src="/images/workshops/{{$workshop->image_url}}" alt="" class="thumbnail clients-logo"></td>
                                     <td>{{$workshop->name}}</td>
                                     <td style="width: 250px;">
                                         <a href="" data-toggle="modal" data-workshop="{{$workshop->id}}" data-target="#showWorkshop" class='show_workshop'><span class="label label-default">Ver</span></a>
@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('image_url', 'Imagen del taller (270x240)') !!}
+                        {!! Form::label('image_url', 'Imagen del taller (150x140)') !!}
                         {!! Form::file('image_url', ['required']) !!}
 
                     </div>
@@ -179,7 +179,7 @@
                         <div class="col-md-8">
                         <p>Nombre: <span id="workshop-name"></span></p>
                         </div>
-                        
+
 
                     </div>
 
@@ -216,7 +216,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('edit_image_url', 'Imagen del taller (270x240)') !!}
+                        {!! Form::label('edit_image_url', 'Imagen del taller (150x140)') !!}
                         {!! Form::file('edit_image_url') !!}
 
                     </div>

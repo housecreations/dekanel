@@ -6,6 +6,17 @@
 		box-sizing: border-box;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 div#show-consultant-info {
 
     display: inline-block;
@@ -14,7 +25,7 @@ div#show-consultant-info {
 div#show-product-info {
     display: inline-block;
 }
-div#show-workshop-info-info {
+div#show-workshop-info {
 
     display: inline-block;
 }

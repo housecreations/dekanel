@@ -21,6 +21,11 @@ Route::get('/products/{slug}', [
 
 Route::auth();
 
+Route::get('/register', function (){
+
+    return redirect('/');
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', [

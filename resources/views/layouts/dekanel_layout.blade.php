@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=12">
 
     <!--Slider-->
     <link rel="stylesheet" href="{{ asset('css/slider/sl-slide.css')}}">
@@ -58,7 +57,7 @@
                 <span class="icon icon-bar"></span>
                 <span class="icon icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="/images/dekanel-logo.png" alt="" class="logo-position"></a>
+            <a href="#home" class="navbar-brand"><img src="/images/dekanel-logo.png" alt="" class="logo-position"></a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -84,7 +83,7 @@
     <div class="container">
         <div class="row">
 
-            <a href="index.html" class=""><img src="/images/dekanel-logo.png" alt="" class="logo-position"></a>
+            <a href="#home" class=""><img src="/images/dekanel-logo.png" alt="" class="logo-position"></a>
 
         </div>
     </div>
@@ -107,7 +106,7 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/smoothscroll.js"></script>
 <script src="js/wow.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="js/custom.js?v=8"></script>
 
 
 
@@ -118,39 +117,38 @@
 <script src="js/slider/jquery.slitslider.js"></script>
 <!-- /Required javascript files for Slider -->
 
-<!-- SL Slider -->
-<script type="text/javascript">
-    $(function() {
-        var Page = (function() {
+<script type="text/javascript"> 
+$(function() {
+    var Page = (function() {
 
-            var $navArrows = $( '#nav-arrows' ),
-                slitslider = $( '#slider' ).slitslider( {
-                    autoplay : false
-                } ),
+        var $navArrows = $( '#nav-arrows' ),
+        slitslider = $( '#slider' ).slitslider( {
+interval : 4000,            
+autoplay : true
+        } ),
 
-                init = function() {
-                    initEvents();
-                },
-                initEvents = function() {
-                    $navArrows.children( ':last' ).on( 'click', function() {
-                        slitslider.next();
-                        return false;
-                    });
+        init = function() {
+            initEvents();
+        },
+        initEvents = function() {
+            $navArrows.children( ':last' ).on( 'click', function() {
+                slitslider.next();
+                return false;
+            });
 
-                    $navArrows.children( ':first' ).on( 'click', function() {
-                        slitslider.previous();
-                        return false;
-                    });
-                };
+            $navArrows.children( ':first' ).on( 'click', function() {
+                slitslider.previous();
+                return false;
+            });
+        };
 
-            return { init : init };
+        return { init : init };
 
-        })();
+    })();
 
-        Page.init();
-    });
+    Page.init();
+});
 </script>
-
 
 
 

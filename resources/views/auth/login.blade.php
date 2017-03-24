@@ -1,7 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+ <div class="login-page">
+        <div class="form">
+
+            <form class="login-form" role="form" method="POST" action="{{ url('/login') }}">
+                {{ csrf_field() }}
+                <input id="email" type="email" class="" placeholder="Correo electrónico" name="email" value="{{ old('email') }}">
+                <input id="password" type="password" placeholder="Contraseña" name="password">
+                <button type="submit">Ingresar
+                </button>
+               {{-- <p class="message">Not registered? <a href="#">Create an account</a></p>--}}
+            </form>
+            <p class="message">Powered by <a href="http://www.housecreations.com.ve" target="_blank">HouseCreations</a></p>
+        </div>
+
+
+    </div>
+
+
+
+
+{{--<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -62,5 +83,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>--}}
 @endsection

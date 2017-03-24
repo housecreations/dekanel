@@ -47,11 +47,11 @@ class HomeController extends Controller
             $initial_config->label = 'Dirección';
             $initial_config->save();
 
-            $initial_config = new ApplicationInformation();
+         /*   $initial_config = new ApplicationInformation();
             $initial_config->option = 'logo_url';
             $initial_config->value = '';
             $initial_config->label = 'Logo de la página';
-            $initial_config->save();
+            $initial_config->save();*/
 
             $initial_config = new ApplicationInformation();
             $initial_config->option = 'phone_number';
