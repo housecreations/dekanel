@@ -27,7 +27,7 @@
 
         <div class="col-md-12">
 
-            @foreach($product->topics as $topic)
+            @foreach($product->topics()->orderBy('position', 'asc')->get() as $i => $topic)
 
                 <div class="col-md-12 product-container">
                     <div class="col-md-3">
@@ -54,12 +54,63 @@
                     </div>
                 </div>
 
+                @if(! ($i == count($product->topics()->orderBy('position', 'asc')->get())-1) )
                 <hr class="long-hr">
+                @endif
             @endforeach
 
         </div>
 
 
+    </section>
+
+    <section id="other-products">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-12">
+
+                    <div class="col-md-4">
+                        <h2>Otros Productos</h2>
+
+                    </div>
+
+                    @foreach($otherProducts as $otherProduct)
+
+                        <div class="col-md-4 products-container">
+
+                            <div class="col-md-12 text-center">
+                                <img src="/images/products/{{$otherProduct->image_url}}" alt="" class="product-img">
+                            </div>
+
+                            <div class="col-md-12">
+
+                                <p class="products-name">{{$otherProduct->name}}</p>
+
+                            </div>
+
+                            <div class="col-md-12">
+
+                                <p class="products-description">{{$otherProduct->short_description}}</p>
+
+                            </div>
+
+                            <div class="col-md-12 text-center">
+
+                                <a href="{{route('products.show', $otherProduct->slug)}}" class="product-link">Ver +</a>
+
+                            </div>
+
+                        </div>
+
+                    @endforeach
+
+
+                </div>
+
+            </div>
+        </div>
     </section>
 
 

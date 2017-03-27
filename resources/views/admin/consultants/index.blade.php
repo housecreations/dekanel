@@ -55,6 +55,7 @@
 
                             <thead>
 
+                            <th>Posición</th>
                             <th>Imagen</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
@@ -63,9 +64,22 @@
                             <th style="width: 200px">Acciones</th>
                             </thead>
                             <tbody>
-                            @foreach($consultants as $consultant)
-                                <tr>
+                            @foreach($consultants as $i => $consultant)
+                                <tr id="{{$consultant->position}}">
 
+                                    <td>
+                                        @if($i == 0)
+                                        <a class="btn btn-warning to_change hidden" data-side="left" data-url="consultants"><i class="fa fa-arrow-up"></i> </a>
+                                        @else
+                                            <a class="btn btn-warning to_change" data-side="left" data-url="consultants"><i class="fa fa-arrow-up"></i> </a>
+                                        @endif
+
+                                            @if($i == count($consultants)-1)
+                                        <a  style="margin-top: 5px;" class="btn btn-warning to_change hidden" data-side="right" data-url="consultants"><i class="fa fa-arrow-down"></i> </a>
+                                        @else
+                                            <a  style="margin-top: 5px;" class="btn btn-warning to_change" data-side="right" data-url="consultants"><i class="fa fa-arrow-down"></i> </a>
+                                            @endif
+                                    </td>
                                     <td><img src="/images/consultants/{{$consultant->profile_image_url}}" alt="" class="thumbnail thumbnail-table"></td>
                                     <td>{{$consultant->name}}</td>
                                     <td>{{$consultant->last_name}}</td>
@@ -179,9 +193,6 @@
                     <h4 class="modal-title" id="myModalLabel">Información del consultor</h4>
                 </div>
 
-
-
-
                 <div class="modal-body">
 
                     <div id="show-consultant-info">
@@ -195,7 +206,6 @@
                         <p>Apellido: <span id="consultant-last-name"></span></p>
                         <p>Descripcion: <span id="consultant-description"></span></p>
                         </div>
-
 
                     </div>
 

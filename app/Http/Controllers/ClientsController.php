@@ -19,7 +19,7 @@ class ClientsController extends Controller
      */
     public function index(Request $request)
     {
-        $clients = Client::search($request->name)->orderBy('id', 'DESC')->paginate(6);
+        $clients = Client::search($request->name)->orderBy('position', 'asc')->paginate(20);
 
         return view('admin.clients.index', ['clients' => $clients]);
     }
@@ -54,11 +54,41 @@ class ClientsController extends Controller
         $client = new Client();
 
         $client->logo_url = $name;
+
+
+        if(Client::orderBy('position', 'desc')->first())
+            $last_position = Client::orderBy('position', 'desc')->first()->position;
+        else
+            $last_position = 0;
+
+        $client->position = $last_position + 1;
+
+
         $client->save();
 
         Flash::success("Cliente registrado");
 
         return back();
+    }
+
+
+
+    public function changePosition(Request $request){
+
+        if($request->ajax()){
+
+            $select_client = Client::wherePosition($request->select_id)->first();
+            $other_client = Client::wherePosition($request->other_id)->first();
+
+            $aux = $select_client->position;
+
+            $select_client->position = $other_client->position;
+            $select_client->save();
+            $other_client->position = $aux;
+            $other_client->save();
+            return response()->json(['status' => 'success']);
+        }
+
     }
 
     /**

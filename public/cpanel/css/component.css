@@ -10,11 +10,59 @@
 
 
 
+.to_change .fa:before{
+
+    line-height: 1;
+
+}
 
 
+p.carousel-text {
+    font-size: 20px;
+    position: absolute;
+   /* top: 0;*/
+    color: white;
+    text-shadow: azure;
+    text-shadow: 2px 2px #000000;
+    width: 197px;
+    word-break: break-word;
+    font-family: 'nunito', sans-serif;
+    line-height: 1;
+}
 
+p.carousel-text.top-right {
+    top: 15px;
+    right: 15px;
+    text-align: left;
+}
 
+p.carousel-text.top-left {
+    top: 15px;
+    left: 15px;
+    text-align: left;
+}
 
+p.carousel-text.bottom-left {
+    bottom: 15px;
+    left: 15px;
+    text-align: left;
+}
+
+p.carousel-text.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    text-align: left;
+}
+
+p.carousel-text.center {
+    top: 50%;
+    left: 30%;
+    text-align: center;
+}
+
+.carousel-image-container {
+    position: relative;
+}
 
 
 div#show-consultant-info {

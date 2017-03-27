@@ -4,19 +4,207 @@
 
 $(document).ready(function(){
 
+
+
+
+
+
+       $('.change_text_color').colorpicker().live('changeColor', function(e) {
+
+
+                $(this).parent().parent().find('.carousel-text').css('color', e.color.toString(
+                    'rgba'));
+
+           var id = $(this).parent().parent().attr('id');
+           var color_code = e.color.toString('rgba');
+           $.ajaxSetup({
+               headers: {
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               }
+           });
+
+
+
+           $.ajax({
+
+               url: '/admin/carousel/change-color',
+               data: {"id": id,
+                   "color_code": color_code},
+               dataType:"JSON",
+               method: 'POST',
+               success: function(data){
+
+               },
+               error: function(err){
+                   console.log(err);
+
+               }
+           });
+
+
+        });
+
+
+
+    $('.change_text_color').each(function( index ) {
+
+        var color = $(this).parent().parent().find('.carousel-text').css('color');
+
+        $(this).colorpicker('setValue', color);
+
+    });
+
+
+
+    $(".to_change").live("click", function(ev){
+
+        var side = $(this).attr('data-side');
+
+        var url = $(this).attr('data-url');
+
+        //elemento seleccionado
+        var to_replace = $(this).parent().parent();
+        if (side == 'left')
+            var to_be_replaced = $(this).parent().parent().prev();
+        if (side == 'right')
+            var to_be_replaced = $(this).parent().parent().next();
+        //tobereplaced elemento con el que se intercambiara
+
+        var select_id = to_replace.attr('id');
+        var other_id = to_be_replaced.attr('id');
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        /*var url_data = '';
+
+        if(url == 'carousel'){
+            url_data = '/admin/carousel/change';
+        }
+        if(url == 'consultants'){
+            url_data = '/admin/consultants/change';
+        }
+        if(url == 'consultants'){
+            url_data = '/admin/consultants/change';
+        }
+*/
+        $.ajax({
+
+            url: '/admin/'+url+'/change',
+            data: {"select_id": select_id,
+                "other_id": other_id},
+            dataType:"JSON",
+            method: 'POST',
+            success: function(data){
+
+
+
+
+                //si el seleccionado es el primero y el otro es el ultimo
+                if($(to_replace).prev().length === 0 && $(to_be_replaced).next().length === 0
+                    ){
+
+                    $(to_replace).find('[data-side*="right"]').addClass('hidden');
+                    $(to_replace).find('[data-side*="left"]').removeClass('hidden');
+                    $(to_be_replaced).find('[data-side*="left"]').addClass('hidden');
+                    $(to_be_replaced).find('[data-side*="right"]').removeClass('hidden');
+
+                    //si el seleccionado es el ultimo y el otro es el primero
+                }else if($(to_replace).next().length === 0 && $(to_be_replaced).prev().length === 0){
+
+                    $(to_replace).find('[data-side*="left"]').addClass('hidden');
+                    $(to_replace).find('[data-side*="right"]').removeClass('hidden');
+                    $(to_be_replaced).find('[data-side*="right"]').addClass('hidden');
+                    $(to_be_replaced).find('[data-side*="left"]').removeClass('hidden');
+                }
+                else{
+
+
+                //Si el seleccionado es el primero
+                if($(to_replace).prev().length === 0){
+                    $(to_replace).find('[class*="hidden"]').removeClass('hidden');
+                    $(to_be_replaced).find('[data-side*="left"]').addClass('hidden');
+                }
+
+                //Si el seleccionado es el ultimo
+                if($(to_replace).next().length === 0){
+                    $(to_replace).find('[class*="hidden"]').removeClass('hidden');
+                    $(to_be_replaced).find('[data-side*="right"]').addClass('hidden');
+                }
+
+                //si el que sera cambiado es el primero
+                if($(to_be_replaced).prev().length === 0){
+
+                    $(to_be_replaced).find('[class*="hidden"]').removeClass('hidden');
+                    $(to_replace).find('[data-side*="left"]').addClass('hidden');
+
+                    }
+
+                //si el que sera cambiado es el ultimo
+                if($(to_be_replaced).next().length === 0){
+                    $(to_be_replaced).find('[class*="hidden"]').removeClass('hidden');
+                    $(to_replace).find('[data-side*="right"]').addClass('hidden');
+                }
+                }
+
+
+
+                var to_replace_html = to_replace.html();
+                var to_be_replaced_html = to_be_replaced.html();
+
+                $(to_be_replaced).html(to_replace_html).css('display', 'none').fadeIn();
+                $(to_replace).html(to_be_replaced_html).css('display', 'none').fadeIn();
+
+                //inicializa el colorpicker nuevamente y sus valores
+                $('.change_text_color').colorpicker();
+                var color_replaced = $(to_be_replaced).find('.carousel-text').css('color');
+                var color_replace = $(to_replace).find('.carousel-text').css('color');
+
+                $(to_be_replaced).find('.change_text_color').colorpicker('setValue', color_replaced);
+                $(to_replace).find('.change_text_color').colorpicker('setValue', color_replace);
+
+
+            },
+            error: function(err){
+                console.log(err);
+
+            }
+        });
+
+    });
+
+
     $('#preloader').fadeOut('slow');
     $('body').css({'overflow':'visible'});
 
 
-    $(".edit_carousel").on("click", function(ev){
+    $(".edit_carousel").live("click", function(ev){
 
         var image_id = $(this).attr('data-image');
 
         $('#edit_image_id').val(image_id);
 
+        $.ajax({
+            url: '/admin/carousel/' + image_id,
+            method: 'GET',
+            success: function(data){
+
+                $("#editCarousel [name='edit_text']").val(data.carousel.text);
+                $("#editCarousel [name='edit_position_class']").val(data.carousel.position_class);
+
+            },
+            error: function(err){
+                console.log(err);
+
+            }
+        });
+
     });
 
-    $(".delete_carousel").on("click", function(ev){
+    $(".delete_carousel").live("click", function(ev){
 
         var image_id = $(this).attr('data-image');
 
@@ -25,7 +213,7 @@ $(document).ready(function(){
     });
 
 
-    $(".add_description").on("click", function(ev){
+    $(".add_description").live("click", function(ev){
 
         var workshop_id = $(this).attr('data-workshop');
 
@@ -91,12 +279,12 @@ $(document).ready(function(){
 
 
 
-    $('.remove_workshop').on('click', function(e){
+    $('.remove_workshop').live('click', function(e){
         var workshop_id = $(this).attr('data-workshop');
         $('#workshop_id_field').val(workshop_id);
     });
 
-    $(".show_workshop").on("click", function(ev){
+    $(".show_workshop").live("click", function(ev){
 
         var workshop_id = $(this).attr('data-workshop');
 
@@ -116,7 +304,7 @@ $(document).ready(function(){
 
     });
 
-    $(".edit_workshop").on("click", function(ev){
+    $(".edit_workshop").live("click", function(ev){
 
         var workshop_id = $(this).attr('data-workshop');
 
@@ -142,12 +330,12 @@ $(document).ready(function(){
 
 
 
-    $('.remove_product').on('click', function(e){
+    $('.remove_product').live('click', function(e){
         var product_id = $(this).attr('data-product');
         $('#product_id_field').val(product_id);
     });
 
-    $(".show_product").on("click", function(ev){
+    $(".show_product").live("click", function(ev){
 
         var product_id = $(this).attr('data-product');
 
@@ -170,7 +358,7 @@ $(document).ready(function(){
 
     });
 
-    $(".edit_product").on("click", function(ev){
+    $(".edit_product").live("click", function(ev){
 
         var product_id = $(this).attr('data-product');
 
@@ -198,12 +386,12 @@ $(document).ready(function(){
 
 
 
-    $('.remove_client').on('click', function(e){
+    $('.remove_client').live('click', function(e){
         var client_id = $(this).attr('data-client');
         $('#client_id_field').val(client_id);
     });
 
-    $(".show_client").on("click", function(ev){
+    $(".show_client").live("click", function(ev){
 
         var client_id = $(this).attr('data-client');
 
@@ -223,7 +411,7 @@ $(document).ready(function(){
 
     });
 
-    $(".edit_client").on("click", function(ev){
+    $(".edit_client").live("click", function(ev){
 
         var client_id = $(this).attr('data-client');
 
@@ -246,12 +434,12 @@ $(document).ready(function(){
     });
 
 
-    $('.remove_consultant').on('click', function(e){
+    $('.remove_consultant').live('click', function(e){
         var consultant_id = $(this).attr('data-consultant');
         $('#consultant_id_field').val(consultant_id);
     });
 
-    $(".show_consultant").on("click", function(ev){
+    $(".show_consultant").live("click", function(ev){
 
 
         var consultant_id = $(this).attr('data-consultant');
@@ -277,7 +465,7 @@ $(document).ready(function(){
     });
 
 
-    $(".edit_consultant").on("click", function(ev){
+    $(".edit_consultant").live("click", function(ev){
 
         var consultant_id = $(this).attr('data-consultant');
 

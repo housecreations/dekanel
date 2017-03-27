@@ -19,7 +19,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::search($request->name)->orderBy('id', 'DESC')->paginate(6);
+        $products = Product::search($request->name)->orderBy('position', 'ASC')->paginate(10);
 
         return view('admin.products.index', ['products' => $products]);
     }
@@ -92,12 +92,41 @@ class ProductsController extends Controller
 
         }
 
+
+        if(Product::orderBy('position', 'desc')->first())
+            $last_position = Product::orderBy('position', 'desc')->first()->position;
+        else
+            $last_position = 0;
+
+        $product->position = $last_position + 1;
+
         $product->save();
 
         Flash::success("Producto registrado");
 
         return back();
     }
+
+
+    public function changePosition(Request $request){
+
+        if($request->ajax()){
+
+            $select_product = Product::wherePosition($request->select_id)->first();
+            $other_product = Product::wherePosition($request->other_id)->first();
+
+            $aux = $select_product->position;
+
+            $select_product->position = $other_product->position;
+            $select_product->save();
+            $other_product->position = $aux;
+            $other_product->save();
+            return response()->json(['status' => 'success']);
+        }
+
+    }
+
+
     /**
      * Display the specified resource.
      *

@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>@yield('title', 'Default')</title>
 
     <meta name="author" content="HouseCreations">
@@ -12,14 +13,17 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
 
 
+    <link href="https://fonts.googleapis.com/css?family=Nunito:800" rel="stylesheet">
+
+
 
 
 
     {{--    <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
    {{-- <link rel="stylesheet" href="{{ asset('css/sl-slide.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/blue-scheme.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/animate.min.css')}}">--}}
+    <link rel="stylesheet" href="{{ asset('css/blue-scheme.css')}}">--}}
+    <link rel="stylesheet" href="{{ asset('css/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('cpanel/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('cpanel/css/component.css')}}">
     <link rel="stylesheet" href="{{ asset('cpanel/css/normalize.css')}}">
@@ -34,10 +38,15 @@
     <script src="{{ asset('cpanel/js/modernizr.custom.js')}}"></script>
 
 
+    <!--Color Picker-->
+    <link rel="stylesheet" href="{{ asset('cpanel/colorpicker/css/bootstrap-colorpicker.css')}}">
+
+
 
     <script src="{{ asset('cpanel/js/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ asset('cpanel/js/jquery-migrate-1.2.1.min.js') }}"></script>
     <script src="{{ asset('cpanel/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('cpanel/colorpicker/js/bootstrap-colorpicker.js') }}"></script>
     <script src="{{ asset('cpanel/js/custom.js')}}"></script>
 
 </head>

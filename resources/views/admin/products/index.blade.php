@@ -55,6 +55,7 @@
 
                             <thead>
 
+                            <th>Posición</th>
                             <th>Imagen</th>
 
                             <th>Título</th>
@@ -62,8 +63,23 @@
                             <th style="width: 300px;">Acciones</th>
                             </thead>
                             <tbody>
-                            @foreach($products as $product)
-                                <tr>
+                            @foreach($products as $i => $product)
+                                <tr id="{{$product->position}}">
+
+
+                                    <td>
+                                        @if($i == 0)
+                                            <a class="btn btn-warning to_change hidden" data-side="left" data-url="products"><i class="fa fa-arrow-up"></i> </a>
+                                        @else
+                                            <a class="btn btn-warning to_change" data-side="left" data-url="products"><i class="fa fa-arrow-up"></i> </a>
+                                        @endif
+
+                                        @if($i == count($products)-1)
+                                            <a  style="margin-top: 5px;" class="btn btn-warning to_change hidden" data-side="right" data-url="products"><i class="fa fa-arrow-down"></i> </a>
+                                        @else
+                                            <a  style="margin-top: 5px;" class="btn btn-warning to_change" data-side="right" data-url="products"><i class="fa fa-arrow-down"></i> </a>
+                                        @endif
+                                    </td>
 
                                     <td><img src="/images/products/{{$product->image_url}}" alt="" class="thumbnail thumbnail-table"></td>
                                    <td>{{$product->name}}</td>

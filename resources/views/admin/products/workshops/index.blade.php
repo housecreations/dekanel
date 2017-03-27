@@ -54,15 +54,31 @@
                         <table class='table table-hover'>
 
                             <thead>
-
+                            <th>Posición</th>
                             <th>Imagen</th>
                             <th>Título</th>
                             <th style="width: 250px;">Acciones</th>
                             </thead>
                             <tbody>
-                            @foreach($workshops as $workshop)
-                                <tr>
+                            @foreach($workshops as $i => $workshop)
+                                <tr id="{{$workshop->position}}">
 
+
+                                    <td>
+
+                                        @if($i == 0)
+                                            <a class="btn btn-warning to_change hidden" data-side="left" data-url="workshops"><i class="fa fa-arrow-up"></i> </a>
+                                        @else
+                                            <a class="btn btn-warning to_change" data-side="left" data-url="workshops"><i class="fa fa-arrow-up"></i> </a>
+                                        @endif
+
+                                        @if($i == count($workshops)-1)
+                                            <a  style="margin-top: 5px;" class="btn btn-warning to_change hidden" data-side="right" data-url="workshops"><i class="fa fa-arrow-down"></i> </a>
+                                        @else
+                                            <a  style="margin-top: 5px;" class="btn btn-warning to_change" data-side="right" data-url="workshops"><i class="fa fa-arrow-down"></i> </a>
+                                        @endif
+
+                                    </td>
                                     <td><img src="/images/workshops/{{$workshop->image_url}}" alt="" class="thumbnail clients-logo"></td>
                                     <td>{{$workshop->name}}</td>
                                     <td style="width: 250px;">

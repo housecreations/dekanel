@@ -55,13 +55,30 @@
 
                             <thead>
 
+                            <th style="width: 100px;">Posición</th>
                             <th>Logo</th>
 
                             <th>Acciones</th>
                             </thead>
                             <tbody>
-                            @foreach($clients as $client)
-                                <tr>
+                            @foreach($clients as $i => $client)
+                                <tr id="{{$client->position}}">
+
+                                    <td>
+
+                                        @if($i == 0)
+                                            <a class="btn btn-warning to_change hidden" data-side="left" data-url="clients"><i class="fa fa-arrow-up"></i> </a>
+                                        @else
+                                            <a class="btn btn-warning to_change" data-side="left" data-url="clients"><i class="fa fa-arrow-up"></i> </a>
+                                        @endif
+
+                                        @if($i == count($clients)-1)
+                                            <a  style="margin-top: 5px;" class="btn btn-warning to_change hidden" data-side="right" data-url="clients"><i class="fa fa-arrow-down"></i> </a>
+                                        @else
+                                            <a  style="margin-top: 5px;" class="btn btn-warning to_change" data-side="right" data-url="clients"><i class="fa fa-arrow-down"></i> </a>
+                                        @endif
+
+                                    </td>
 
                                     <td><img src="/images/clients/{{$client->logo_url}}" alt="" class="thumbnail clients-logo"></td>
 

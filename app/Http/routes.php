@@ -32,6 +32,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'as' => 'admin.index',
         'uses' => 'AdminController@index']);
 
+
+
+    Route::get('/carousel/{id}', [
+        'as' => 'admin.carousel.show',
+        'uses' => 'AdminController@show']);
+
+
     Route::post('/carousel', [
         'as' => 'admin.carousel.store',
         'uses' => 'AdminController@storeCarousel']);
@@ -44,10 +51,36 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'as' => 'admin.carousel.destroy',
         'uses' => 'AdminController@destroyCarousel']);
 
+    Route::post('/carousel/change', [
+            'as' => 'admin.carousel.change',
+            'uses' => 'AdminController@changePosition']);
+
+    Route::post('/carousel/change-color', [
+        'as' => 'admin.carousel.change-color',
+        'uses' => 'AdminController@changeColor']);
+
     Route::resource('consultants', 'ConsultantsController');
+
+    Route::post('/consultants/change', [
+        'as' => 'admin.consultants.change',
+        'uses' => 'ConsultantsController@changePosition']);
+
     Route::resource('clients', 'ClientsController');
+
+    Route::post('/clients/change', [
+        'as' => 'admin.clients.change',
+        'uses' => 'ClientsController@changePosition']);
+
     Route::resource('configuration', 'ApplicationInformationsController');
     Route::resource('products', 'ProductsController');
+
+    Route::post('/products/change', [
+        'as' => 'admin.products.change',
+        'uses' => 'ProductsController@changePosition']);
+
+    Route::post('/workshops/change', [
+        'as' => 'admin.products.workshops.change',
+        'uses' => 'TopicsController@changePosition']);
 
     Route::group(['prefix' => 'products'], function () {
 
@@ -79,6 +112,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::put('/workshops/description/{id}', [
             'as' => 'admin.products.workshops.descriptions.update',
             'uses' => 'TopicsController@updateDescription']);
+
+
+
 
     });
 

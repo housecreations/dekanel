@@ -80,13 +80,17 @@ class HomeController extends Controller
         }
 
 
-        $products = Product::all();
 
-        $consultants = Consultant::all();
 
-        $clients = Client::all();
+        $products = Product::orderBy('position', 'ASC')->get();
 
-        $carousel = CarouselImage::all();
+        $consultants = Consultant::orderBy('position', 'ASC')->get();
+
+
+        $clients = Client::orderBy('position', 'ASC')->get();
+
+
+        $carousel = CarouselImage::orderBy('position', 'ASC')->get();
 
         return view('welcome_home', ['products' => $products, 'consultants' => $consultants, 'clients' => $clients, 'carousel' => $carousel]);
     }
@@ -96,7 +100,9 @@ class HomeController extends Controller
 
         $product = Product::findBySlug($slug);
 
-        return view('products')->with('product', $product);
+        $products = Product::orderBy('position', 'ASC')->whereNotIn('id', [$product->id])->get();
+
+        return view('products')->with('product', $product)->with('otherProducts', $products);
 
     }
 }

@@ -19,7 +19,7 @@ class ConsultantsController extends Controller
      */
     public function index(Request $request)
     {
-        $consultants = Consultant::search($request->name)->orderBy('id', 'DESC')->paginate(6);
+        $consultants = Consultant::search($request->name)->orderBy('position', 'ASC')->paginate(10);
 
         return view('admin.consultants.index', ['consultants' => $consultants]);
     }
@@ -56,11 +56,38 @@ class ConsultantsController extends Controller
         $consultant->last_name = $request->last_name;
         $consultant->description = $request->description;
         $consultant->profile_image_url = $name;
+
+        if(Consultant::orderBy('position', 'desc')->first())
+            $last_position = Consultant::orderBy('position', 'desc')->first()->position;
+        else
+            $last_position = 0;
+
+        $consultant->position = $last_position + 1;
+
         $consultant->save();
 
         Flash::success("Consultor registrado");
 
         return back();
+    }
+
+
+    public function changePosition(Request $request){
+
+        if($request->ajax()){
+
+            $select_consultant = Consultant::wherePosition($request->select_id)->first();
+            $other_consultant = Consultant::wherePosition($request->other_id)->first();
+
+            $aux = $select_consultant->position;
+
+            $select_consultant->position = $other_consultant->position;
+            $select_consultant->save();
+            $other_consultant->position = $aux;
+            $other_consultant->save();
+            return response()->json(['status' => 'success']);
+        }
+
     }
 
     /**

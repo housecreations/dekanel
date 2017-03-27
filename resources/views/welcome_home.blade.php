@@ -25,10 +25,10 @@
                     <!--Slider Item2-->
                         <div class="sl-slide item2" data-orientation="vertical" data-slice1-rotation="0" data-slice2-rotation="0" data-slice1-scale="1.5" data-slice2-scale="1.5">
                             <div class="sl-slide-inner">
-                                <div class="">
+                                <div class="carousel-image-container">
 
                                         <img class="slider-img" src="/images/carousel/{{$image->image_url}}" alt="Imagen {{$image->id}}" />
-
+                                    <p class="carousel-text {{$image->position_class}}" style="color: {{$image->color_code}};">{{$image->text}}</p>
                                 </div>
                             </div>
                         </div>

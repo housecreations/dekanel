@@ -15,7 +15,7 @@ class CreateSubTopicsTable extends Migration
         Schema::create('sub_topics', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('title');
+            $table->longText('title');
             $table->integer('topic_id')->unsigned();
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
 

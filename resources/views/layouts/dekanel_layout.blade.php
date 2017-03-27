@@ -35,6 +35,8 @@
     <script src="{{ asset('js/slider/modernizr.min.js')}}"></script>
     <link rel="stylesheet" href="{{ asset('css/slider/flexslider.css')}}">
 
+
+
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
@@ -106,6 +108,7 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/smoothscroll.js"></script>
 <script src="js/wow.min.js"></script>
+
 <script src="js/custom.js?v=8"></script>
 
 
@@ -124,7 +127,7 @@ $(function() {
         var $navArrows = $( '#nav-arrows' ),
         slitslider = $( '#slider' ).slitslider( {
 interval : 4000,            
-autoplay : true
+autoplay : false
         } ),
 
         init = function() {

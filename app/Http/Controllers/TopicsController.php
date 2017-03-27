@@ -25,7 +25,7 @@ class TopicsController extends Controller
 
         $product = Product::find($id);
 
-        $workshops = $product->topics()->search($request->name)->orderBy('id', 'DESC')->paginate(6);
+        $workshops = $product->topics()->search($request->name)->orderBy('position', 'ASC')->paginate(10);
 
         return view('admin.products.workshops.index', ['workshops' => $workshops, 'product' => $product]);
     }
@@ -66,11 +66,36 @@ class TopicsController extends Controller
 
         $workshop->product_id = $product->id;
 
+        if(Topic::orderBy('position', 'desc')->first())
+            $last_position = Topic::orderBy('position', 'desc')->first()->position;
+        else
+            $last_position = 0;
+
+        $workshop->position = $last_position + 1;
+
         $workshop->save();
 
         Flash::success("Taller registrado");
 
         return back()->with('product', $product);
+    }
+
+    public function changePosition(Request $request){
+
+        if($request->ajax()){
+
+            $select_topic = Topic::wherePosition($request->select_id)->first();
+            $other_topic = Topic::wherePosition($request->other_id)->first();
+
+            $aux = $select_topic->position;
+
+            $select_topic->position = $other_topic->position;
+            $select_topic->save();
+            $other_topic->position = $aux;
+            $other_topic->save();
+            return response()->json(['status' => 'success']);
+        }
+
     }
 
     /**

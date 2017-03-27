@@ -3,7 +3,7 @@
 @section('content')
 
  <div class="login-page">
-        <div class="form">
+        <div class="form animated fadeInDown">
 
             <form class="login-form" role="form" method="POST" action="{{ url('/login') }}">
                 {{ csrf_field() }}
