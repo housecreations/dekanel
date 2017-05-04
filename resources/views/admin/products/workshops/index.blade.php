@@ -54,7 +54,7 @@
                         <table class='table table-hover'>
 
                             <thead>
-                            <th>Posición</th>
+                            <th style="width: 100px;">Posición</th>
                             <th>Imagen</th>
                             <th>Título</th>
                             <th style="width: 250px;">Acciones</th>
